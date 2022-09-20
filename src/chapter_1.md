@@ -20,7 +20,7 @@ Sendo que a fase de **Teste** deverá ocupar todo o ciclo do desenvolvimento.
 
 ## Avaliação da UC
 
-\\[ 0.6*teste/exame + 0.4*projeto \\]
+\\[ 0.6*teste\ ou\ exame + 0.4*projeto \\]
 
 - Nota mínima de 8 valores no teste (não arredonda);
 - Nota mínima de 9.5 valores no trabalho.
