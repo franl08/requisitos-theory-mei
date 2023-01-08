@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="pt" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Teórica 10 - Teóricas de RAS</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Teórica 01</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Teórica 02</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Teórica 03</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> Teórica 04</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> Teórica 05</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">6.</strong> Teórica 06</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">7.</strong> Teórica 07</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">8.</strong> Teórica 08</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">9.</strong> Teórica 09</a></li><li class="chapter-item expanded "><a href="chapter_10.html" class="active"><strong aria-hidden="true">10.</strong> Teórica 10</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">11.</strong> Teórica 11</a></li><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">12.</strong> Teórica 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">13.</strong> Teórica 13</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Teóricas de RAS</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="teórica-10"><a class="header" href="#teórica-10">Teórica 10</a></h1>
+<h2 id="design-patterns"><a class="header" href="#design-patterns"><em>Design Patterns</em></a></h2>
+<h3 id="patterns"><a class="header" href="#patterns"><em>Patterns</em></a></h3>
+<ul>
+<li>Baseia-se na ideia que alguém já terá resolvido os nossos problemas;</li>
+<li>São soluções comprovadas para problemas comuns e conhecidos;</li>
+<li>Emergem da experiência de outros <em>devs</em> para resolver problemas de <em>design</em>;</li>
+<li>A melhor maneira de usar padrões é encher o cérebro com eles para, em seguida, reconhecer o local nos nossos <em>designs</em> em que podemos aplicá-los;</li>
+<li>Ao invés de reutilização de código, os padrões permitem a <strong>reutilização de experiência</strong>;</li>
+<li>São:
+<ul>
+<li>Uma descrição textual de uma solução genérica para um problema recorrente num dado contexto;</li>
+<li>Um <em>chunk</em> pré-definido e construído para servir uma dada situação;</li>
+<li>Um pacote de decisões de <em>design</em> que podem ser reutilizadas como um conjunto.</li>
+</ul>
+</li>
+<li>Existem em níveis diferentes:
+<ul>
+<li>Padrões de Sistema (estilo arquiteturais);</li>
+<li>Padrões de <em>Design</em>;</li>
+<li>Padrões de Código.</li>
+</ul>
+</li>
+<li>Não são perfeitos para todos os problemas;</li>
+<li>A sua habilidade de efetuar uma separação entre as coisas que alteram e as que não alteram, revela-se muito útil para a implementação de sistemas;</li>
+<li><strong>3 tipos</strong>:
+<ul>
+<li>Criacionais;</li>
+<li>Estruturais;</li>
+<li>Comportamentais.</li>
+</ul>
+</li>
+<li>Vamos descrever dois padrões:
+<ul>
+<li><em>Strategy</em> (estrutural);</li>
+<li><em>Observer</em> (comportamental);</li>
+<li><em>Decorator</em> (estrutural).</li>
+</ul>
+</li>
+</ul>
+<h3 id="strategy-pattern"><a class="header" href="#strategy-pattern"><em>Strategy Pattern</em></a></h3>
+<ul>
+<li>Veja-se o exemplo da implementação de patos.
+<ul>
+<li>Todos os patos são capazes de <em>quack</em> e de <em>swim</em>, assim, a superclasse <strong>Pato</strong> deve tratar do código de implementação;</li>
+<li>O método <code>display()</code> é abstrato, visto que todos os patos têm aparências diferentes;</li>
+<li>Cada subtipo de pato é responśavel por implementar o seu próprio comportamento de <code>display()</code>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/ducks_example_one.png" alt="image Exemplo Patos 1" /></p>
+<ul>
+<li>Se quisermos adicionar um novo atributo, por exemplo, o método <code>fly()</code>, este será adicionado à classe do topo, visto que todos os patos devem ser capazes de ter esse método.
+<ul>
+<li>Todas as subclasses vão herdar o método <code>fly()</code> por <strong>herança</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/ducks_example_two.png" alt="image Exemplo Patos 2" /></p>
+<ul>
+<li>
+<p>No entanto, se considerarmos patos de borracha, estes não devem ser capazes de voar. </p>
+<ul>
+<li>Assim, temos de dar <em>override</em> ao método <code>fly()</code>;</li>
+</ul>
+</li>
+<li>
+<p>O mesmo acontece com o método <code>quack()</code>;</p>
+</li>
+<li>
+<p>Assim, devemos escrever esses métodos diretamente dentro da subclasse <em>RubberDuck</em>;</p>
+</li>
+<li>
+<p>O uso da herança para reutilização, neste caso, não foi bom para a manutenção da aplicação;</p>
+</li>
+<li>
+<p><strong>A herança não é bom mecanismo quando são necessárias atualizações</strong>;</p>
+<ul>
+<li>Pode gerar duplicação de código entre subclasses;</li>
+<li>Alterações no código podem fazer alterações entre subclasses não previstas.</li>
+</ul>
+</li>
+<li>
+<p>Uma possível estratégia, é separar os métodos <code>fly()</code> e <code>quack()</code>, visto que estes podem variar entre patos;</p>
+<ul>
+<li>O uso de interfaces é mau para a reutilização de código.</li>
+</ul>
+</li>
+<li>
+<p>Quando um método precisa de ser modificado, é preciso verificar todas as subclasses.</p>
+</li>
+</ul>
+<p><img src="images/ducks_example_three.png" alt="image Exemplo Patos 3" /></p>
+<p><strong>Princípio de <em>design</em> 1</strong>: Devemos identificar os aspetos da aplicação que variam e separá-los dos restantes.</p>
+<p><strong>Princípio de <em>design</em> 2</strong>: Devemos programar para uma interface, não para a implementação.</p>
+<p><strong>Princípio de <em>design</em> 3</strong>: Devemos favorecer a composição ao invés da herança.</p>
+<ul>
+<li>Este padrão define uma família de algoritmos, encapsula cada um deles e permite a troca entre eles;</li>
+<li>Deixa que que o algoritmo varie independentemente da utilização que o cliente lhe pretende dar.</li>
+</ul>
+<h3 id="observer-pattern"><a class="header" href="#observer-pattern"><em>Observer Pattern</em></a></h3>
+<ul>
+<li>Veja-se o exemplo de uma aplicação de monitorização de meteorologia:
+<ul>
+<li><strong>Problema</strong>: se novos <em>Displays</em> são adicionados, então precisamos de atualizar os dados da meteorologia;</li>
+<li><strong>Oportunidade</strong>: a informação/interface necessária entre <em>displays</em> é semelhante.</li>
+</ul>
+</li>
+<li>Este padrão define uma dependência de um para muitos entre objetos;</li>
+<li>Quando o estado de um objeto altera, todos os seus dependentes são notificados e atualizados de forma automática.</li>
+</ul>
+<h3 id="decorator-pattern"><a class="header" href="#decorator-pattern"><em>Decorator Pattern</em></a></h3>
+<p><strong>Princípio <em>open-closed</em></strong>: Um módulo ou classe deve ser aberto à sua extensão, mas fechado à modificação.</p>
+<ul>
+<li>Este é o princípio mais importante do <em>design</em> Orientado a Objetos;</li>
+<li>Os módulos devem ser escritos de forma a poderem ser extendidos, sem serem modificados;</li>
+<li>Devemos querer alterar o que os módulos fazem sem ser necessário alterar o seu código;</li>
+<li>o <em>decorator pattern</em> coloca responsabilidades adicionais a um objeto de forma dinâmica;</li>
+<li>Providencia uma alternativa flexível para <em>subclassing</em> de forma a extender as funcionalidades.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_9.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="chapter_11.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_9.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="chapter_11.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

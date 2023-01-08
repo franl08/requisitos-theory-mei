@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="pt" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Teórica 08 - Teóricas de RAS</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Teórica 01</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Teórica 02</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Teórica 03</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> Teórica 04</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> Teórica 05</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">6.</strong> Teórica 06</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">7.</strong> Teórica 07</a></li><li class="chapter-item expanded "><a href="chapter_8.html" class="active"><strong aria-hidden="true">8.</strong> Teórica 08</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">9.</strong> Teórica 09</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">10.</strong> Teórica 10</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">11.</strong> Teórica 11</a></li><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">12.</strong> Teórica 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">13.</strong> Teórica 13</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Teóricas de RAS</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="teórica-08"><a class="header" href="#teórica-08">Teórica 08</a></h1>
+<h2 id="riscos-arquiteturais"><a class="header" href="#riscos-arquiteturais">Riscos Arquiteturais</a></h2>
+<h3 id="abordagem-orientada-aos-riscos"><a class="header" href="#abordagem-orientada-aos-riscos">Abordagem Orientada aos Riscos</a></h3>
+<ul>
+<li>Ajuda a desenvolver <em>software</em> de qualidade de forma rápida e barata;</li>
+<li>Permite que os arquitetos de <em>software</em> experimentem múltiplas arquiteturas;</li>
+<li>Ajuda a responder a 2 questões:
+<ul>
+<li>Quanto trabalho de arquitetura de <em>software</em> é preciso fazer?</li>
+<li>Que técnicas é que devem ser utilizadas?</li>
+</ul>
+</li>
+<li>Guia à aplicação de um conjunto mínimo de técnicas de arquitetura de forma a diminuir os riscos ligados à pressão nos arquitetos de <em>software</em>;</li>
+<li>Segue 3 passos:
+<ul>
+<li>Identifica e prioritiza riscos;</li>
+<li>Seleciona e aplica um conjunto de técnicas;</li>
+<li>Avalia a redução do risco.</li>
+</ul>
+</li>
+</ul>
+<h3 id="riscos"><a class="header" href="#riscos">Riscos</a></h3>
+<ul>
+<li>Em engenharia, riscos são conhecidos como a probabilidade de existir uma falha multiplicado pelo impacto;
+\[  risk\ =\ probabilidade\ de\ falha \times impacto \]</li>
+<li>A probabilidade de falha e o impacto não são certos, visto que é muito difícil medi-los de forma precisa;</li>
+<li>Um risco pode existir (alguém o vê) mesmo que este não exista;</li>
+<li>Pode ser qualificado categoricamente, por vezes como uma falha de um atributo de qualidade necessário;</li>
+<li>Devem ser bem descritos, para que, posteriormente, possa ser testada a sua mitigação;</li>
+</ul>
+<h4 id="protótipos-de-riscos-comuns"><a class="header" href="#protótipos-de-riscos-comuns">Protótipos de Riscos Comuns</a></h4>
+<p><img src="images/prot_risks.png" alt="image Protótipos de Riscos" /></p>
+<h4 id="prioritização-de-riscos"><a class="header" href="#prioritização-de-riscos">Prioritização de Riscos</a></h4>
+<ul>
+<li>Os riscos não são todos iguais, pelo que devem ser prioritizados. Muitas vezes, esta prioritização é feita com base numa discussão das prioridades entre os elementos das equipas;</li>
+<li>Os riscos podem ser caraterizados em duas grandes dimensões:
+<ul>
+<li>Com prioridade para os <em>stakholders</em> (<strong>de negócio</strong>);</li>
+<li>Os desenvolvedores perceberam dificuldades (<strong>de engenharia</strong>);</li>
+</ul>
+</li>
+</ul>
+<h4 id="mitigação-de-riscos"><a class="header" href="#mitigação-de-riscos">Mitigação de Riscos</a></h4>
+<ul>
+<li>As técnicas de mitigação de riscos são muito vastas, desde pura análise até puras soluções.</li>
+<li>Vejam-se algumas técnicas:</li>
+</ul>
+<p><img src="images/risk_techniques.png" alt="image Técnicas de Mitigação de Riscos" /></p>
+<ul>
+<li>É essencial que se seja capaz de explicitar como escolher as técnicas de forma a responder aos riscos;</li>
+<li>Para isso, pode criar-se uma espécie de manual com entradas no seguinte formato:
+<ul>
+<li>Se tivermos <code>nome do risco</code>, devemos considerar utilizar <code>nome da técnica</code> para o reduzir.</li>
+</ul>
+</li>
+<li>De notar, que uma técnica poderá ser boa a reduzir alguns riscos, mas não outros, sendo que, idealmente, uma técnica singular deveria ser endereçada para resolver todos os riscos conhecidos;</li>
+<li>Alguns riscos podem ser mitigados utilizando algumas técnicas préviamente conhecidas, enquanto que, para outros, é necessário descobrir essas técnicas no momento.</li>
+</ul>
+<h4 id="esforço-proporcional-aos-riscos"><a class="header" href="#esforço-proporcional-aos-riscos">Esforço proporcional aos riscos</a></h4>
+<ul>
+<li>A abordagem orientada aos riscos utiliza o seguinte princípio:
+<ul>
+<li>Os esforços colocados na arquitetura devem ser proporcionais ao risco de falha.</li>
+</ul>
+</li>
+<li>Assim, utilizando esta abordagem, a preocupação surgirá nas áreas em que riscos de falha são percetíveis.</li>
+</ul>
+<h3 id="estilos-de-design"><a class="header" href="#estilos-de-design">Estilos de <em>Design</em></a></h3>
+<ul>
+<li><em>Evolutionary Design</em> (NDUF);</li>
+<li><em>Planned Design</em> (BDUF);</li>
+<li><em>Minimal Planned Design</em> (EDUF/LDUF).</li>
+</ul>
+<h4 id="evolutionary-design"><a class="header" href="#evolutionary-design"><em>Evolutionary Design</em></a></h4>
+<ul>
+<li>O <em>design</em> do sistema cresce conforme o sistema é implementado;</li>
+<li>Práticas <em>agile</em> utilizadas para combater o &quot;caos&quot;:
+<ul>
+<li><em>Refactoring</em> ajuda a &quot;limpar&quot; locais de <em>design</em> não coordenados;</li>
+<li><em>Design</em> orietnado aos testes garante que as mudanças no sistema não provocam a perda ou a falha de funcionalidades já existentes;</li>
+<li>Tem uma integração contínua e providencia a mesma <em>codebase</em> a toda a equipa.</li>
+</ul>
+</li>
+</ul>
+<h4 id="planned-design"><a class="header" href="#planned-design"><em>Planned Design</em></a></h4>
+<ul>
+<li>A arquitetura é detalhada antes da sua construção;</li>
+<li>Poucas pessoas defendem que se faça isto para todo um sistema;</li>
+<li>É útil para quando diversas equipas se encontram a trabalhar em simultâneo numa mesma arquitetura partilhada;</li>
+<li>Mesmo nesta abordagem, raramente se tem uma arquitetura a 100% antes de se iniciar a prototipagem ou o código;</li>
+<li>O <em>design</em> pode ser aperfeiçoado com o <em>feedback</em> do código.</li>
+</ul>
+<h4 id="minimal-planned-design"><a class="header" href="#minimal-planned-design"><em>Minimal Planned Design</em></a></h4>
+<ul>
+<li>Estilo híbrido das abordagens anteriores que permite o seu balanceamento;</li>
+<li>Uma forma de o fazer é, inicialmente, efetuar-se o <em>planned design</em> para garantir que a arquitetura é capaz de lidar com os grandes riscos do sistema e as alterações futuras aos requisitos podem ser tratadas através de um <em>design</em> local ou do <em>evolutionary design</em>;</li>
+</ul>
+<h4 id="sumário-dos-estilos-de-design"><a class="header" href="#sumário-dos-estilos-de-design">Sumário dos Estilos de <em>Design</em></a></h4>
+<ul>
+<li>A abordagem <em>risk-driven</em> é compatível com os 3 estilos;</li>
+<li>Todos os estilos concordam que o <em>design</em> terá, obrigatoriamente, de acontecer em algum ponto;
+<ul>
+<li>No NDUF quando um risco é considerado suficientemente grande;</li>
+<li>No BDUF numa fase inicial;</li>
+<li>No LDUF é uma mistura dos dois anteriores.</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="chapter_9.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="chapter_9.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

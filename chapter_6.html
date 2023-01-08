@@ -1,0 +1,419 @@
+<!DOCTYPE HTML>
+<html lang="pt" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Teórica 06 - Teóricas de RAS</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Teórica 01</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Teórica 02</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Teórica 03</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> Teórica 04</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> Teórica 05</a></li><li class="chapter-item expanded "><a href="chapter_6.html" class="active"><strong aria-hidden="true">6.</strong> Teórica 06</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">7.</strong> Teórica 07</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">8.</strong> Teórica 08</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">9.</strong> Teórica 09</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">10.</strong> Teórica 10</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">11.</strong> Teórica 11</a></li><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">12.</strong> Teórica 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">13.</strong> Teórica 13</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Teóricas de RAS</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="teórica-06"><a class="header" href="#teórica-06">Teórica 06</a></h1>
+<h2 id="elicitação-de-requisitos"><a class="header" href="#elicitação-de-requisitos">Elicitação de Requisitos</a></h2>
+<h3 id="scope"><a class="header" href="#scope"><em>Scope</em></a></h3>
+<ul>
+<li>A elicitação de requisitos permite a compreensão de quais são os requisitos de um dado sistema;</li>
+<li>Permite perceber as necessidades e expectativas dos <em>stakeholders</em> em relação ao produto;</li>
+<li>Estas atividades têm uma natureza comunicativa, o que envolve técnicas relacionadas às ciências sociais e teoria organizacional.</li>
+</ul>
+<h3 id="processo"><a class="header" href="#processo">Processo</a></h3>
+<p><img src="images/process_eli.png" alt="image processo" /></p>
+<ul>
+<li>As atividades relacionadas a requisitos não devem ser exclusivas da fase inicial do ciclo de vida do projeto;</li>
+<li>A equipa de desenvolvimento deverá adotar uma abordagem que permita trabalhar com os requisitos em todo o ciclo de vida do projeto.</li>
+</ul>
+<h4 id="tipo-de-atividades"><a class="header" href="#tipo-de-atividades">Tipo de Atividades</a></h4>
+<ul>
+<li>Engenheiros de Requisitos intervêm em principalmente 2 tipos de atividades:
+<ul>
+<li>Contactam pessoas que têm um bom conhecimento acerca do problema, o que lhes permite identificar as restrições que poderão limitar a solução para o problema;
+<ul>
+<li>Caracterizada por um certo grau de incerteza e um aumento da informação e conhecimento relativo ao problema.</li>
+</ul>
+</li>
+<li>Preparam o documento de requisitos que descreverá o comportamento e as características expectáveis do sistema.
+<ul>
+<li>Caracterizada pela organização de ideias, a resolução de pontos de vista conflituosos e a eliminição de inconsistências e ambiguidades.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="identificação-dos-stakeholders"><a class="header" href="#identificação-dos-stakeholders">Identificação dos <em>Stakeholders</em></a></h3>
+<ul>
+<li>São uma das principais fontes de informação durante o processo de elicitação;</li>
+<li>Um <em>system stakeholder</em> é alguém que tem algum tipo de interesse legítimo no sistema.
+<ul>
+<li>Poderá ser um grupo de pessoas ou organizações;</li>
+<li>O termo é interesse é bastante vago, podendo resultar da utilização do sistema ou em algum tipo de responsabilidade relacionado ao sistema.</li>
+</ul>
+</li>
+</ul>
+<h4 id="funções"><a class="header" href="#funções">Funções</a></h4>
+<ul>
+<li>Geralmente, o número de <em>stakeholders</em> de um projeto é elevado (\( \geq 6 \));</li>
+<li>A identificação dos <em>stakeholders</em> pode ser feita através da caracterização de funções ou posições existentes na organização;</li>
+<li>Alguns indivíduos poderão acumular diversas funções, o que provoca que seja necessário distinguir os indivíduos das suas funções.</li>
+</ul>
+<h4 id="formas-de-identificar"><a class="header" href="#formas-de-identificar">Formas de Identificar</a></h4>
+<ol>
+<li>Perguntar ao cliente;</li>
+<li>Examinar as posições da organização;</li>
+<li>Comparar o produto com outros semelhantes;</li>
+<li>Analisar o contexto do sistema;</li>
+<li>Consultar os <em>stakeholders</em> que são facilmente encontrados na maioria dos sistemas.</li>
+</ol>
+<h4 id="utilizador"><a class="header" href="#utilizador">Utilizador</a></h4>
+<ul>
+<li>Qualquer pessoa que irá operar ou interagir diretamente com o sistema, quando este estiver em operação funcional no seu ambiente.</li>
+<li>Deve ser claramente identificado, visto que o sistema será desenvolvido para si;</li>
+<li>Deve ser dada prioridade aos utilizadores que irão interagir com o sistema mais frequentemente.</li>
+</ul>
+<h5 id="particularidades"><a class="header" href="#particularidades">Particularidades</a></h5>
+<p>É recomendada a coleção de informações para compreender se existe alguma particularidade a ser registada para a interação com o sistema de algum dos seguintes grupos de pessoas:</p>
+<ul>
+<li>Deficientes ou de mobilidade reduzida;</li>
+<li>Com baixa nível de literacia;</li>
+<li>Não dominam a linguagem principal do sisteam;</li>
+<li>Com dificuldades visuais;</li>
+<li>Que transportam ou manuseiam substâncias e objetos;</li>
+<li>Com pouca habilidade para trabalhar com sistemas informáticos.</li>
+</ul>
+<h4 id="cliente"><a class="header" href="#cliente">Cliente</a></h4>
+<ul>
+<li>Entidade que encomenda e paga o desenvolvimento de um sistema;</li>
+<li>Geralmente, a encomenda é feita após uma negociação do preço com o produtor;</li>
+<li>Esta relação é, recorrentemente, formalizada através de um contrato;</li>
+<li>O cliente deverá ser providenciado com a documentação técnica completa que lhe permitirá a instalação e manutenção do sistema ao longo do seu ciclo de vida;</li>
+<li>Tem o poder para decidir acerca de diversos assuntos, nomeadamente o escopo, as funcionalidades e o custo;</li>
+<li>Nem sempre são utilizadores do sistema.</li>
+</ul>
+<h4 id="comprador"><a class="header" href="#comprador">Comprador</a></h4>
+<ul>
+<li>Alguém que paga para adquirir um sistema assim que este esteja pronto;</li>
+<li>São os maiores consumidores do sistema e este é construído à sua medida;</li>
+<li>Em muitos casos, o nome dos compradores sabe-se muito antes do início do desenvolvimento da aplicação;</li>
+<li>O ato de comprar não precisa de estar associado com uma transação financeira entre o comprador e o vendedor.</li>
+</ul>
+<h4 id="segmento-do-mercado"><a class="header" href="#segmento-do-mercado">Segmento do Mercado</a></h4>
+<ul>
+<li>Definido pela caracterização de necessidades ou comportamentos comuns dos compradores para os quais é orientado um dado um produto;</li>
+<li>O grupo de compradores representa um segmento do mercado se:
+<ul>
+<li>As suas necessidades exigem e justificam uma oferta diferente;</li>
+<li>São abordados através de diferentes canais de distribuição;</li>
+<li>Têm diferentes tipos de relações;</li>
+<li>Têm níveis significativamente diferentes de lucro;</li>
+<li>Estão dispostos a pagar por aspetos diferentes da oferta.</li>
+</ul>
+</li>
+</ul>
+<h4 id="negative-stakeholder"><a class="header" href="#negative-stakeholder"><em>Negative Stakeholder</em></a></h4>
+<ul>
+<li>Alguém que deseja que o sistema não seja desenvolvido;</li>
+<li>As suas atitudes podem variar de uma oposição pacífica a uma hostilidade ativa;</li>
+<li>A identificação de <em>negative stakeholders</em> poderá permitir a identificação de indivíduos que pretendam sabotar o desenvolvimento do sistema;</li>
+<li>A sua presença nas atividades de elicitação de requisitos é importante de forma a identificar e compreender as relações pessoais e políticas numa organização.</li>
+</ul>
+<h3 id="técnicas-para-elicitação-de-requisitos"><a class="header" href="#técnicas-para-elicitação-de-requisitos">Técnicas para elicitação de requisitos</a></h3>
+<h4 id="competências"><a class="header" href="#competências">Competências</a></h4>
+<ul>
+<li>Competências genéricas necessárias para um engenheiro de requisitos:
+<ul>
+<li><strong>Questionar</strong>: ser capaz de questionar as pessoas certas acerca dos requisitos;</li>
+<li><strong>Observar</strong>: observar os comportamentos dos utilizadores para com produtos existentes, sistemas ou processos, de forma a inferir as suas necessidades;</li>
+<li><strong>Discutir</strong>: argumentar com utilizadores acerca das suas necessidades, com o objetivo de formular uma compreensão acerca dos requisitos;</li>
+<li><strong>Negociar</strong>: facilitar a negociação entre os utilizadores de forma alcançar soluções aceitáveis acerca dos requisitos a serem incluídos, removidos ou alterados;</li>
+<li><strong>Supor</strong>: antecipar-se acerca das funcionalidades que os utilizadores poderão necessitar ou desejar, especialmente para a criação de produtos <em>mass-market</em>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="grupos-de-técnicas"><a class="header" href="#grupos-de-técnicas">Grupos de Técnicas</a></h4>
+<ul>
+<li><em><strong>Marketing</strong></em>: existe um interesse especial nos requisitos que contribuam para o sucesso comercial do sistema;</li>
+<li><strong>Psicologia e Sociologia</strong>: enfatiza a satisfação das necessidades dos utilizadores, dos indíviduos e dos agentes sociais;</li>
+<li><strong><em>Design</em> Participativo</strong>: existe um envolvimento ativo por parte dos utilizadores na definição dos requisitos;</li>
+<li><strong>Fatores Humanos e Interação Pessoa-Máquina</strong>: foco na interação dos utilizadores com o sistema;</li>
+<li><strong>Qualidade</strong>: principal interesse na relação entre os requisitos e a qualidade do sistema;</li>
+<li><strong>Métodos Formais</strong>: interesse na precisão e rigor matemático na especificação de requisitos.</li>
+</ul>
+<p>Existem 3 grandes grupos de técnicas:</p>
+<ol>
+<li>Individuais;</li>
+<li>Grupos de Pessoas;</li>
+<li>Artefactos.</li>
+</ol>
+<h4 id="individuais"><a class="header" href="#individuais">Individuais</a></h4>
+<ul>
+<li>Entrevistas;</li>
+<li>Estudos;</li>
+<li>Introspeção;</li>
+<li>Etnografia.</li>
+</ul>
+<h5 id="entrevistas"><a class="header" href="#entrevistas">Entrevistas</a></h5>
+<ul>
+<li>Não possuem regras exatas ou fórmulas, dando uma grande liberdade ao entrevistador;</li>
+<li>Por vezes, apresentam resultados de baixa qualidade;</li>
+<li>Devem ser conduzidas de forma estruturada para que apresentem bons resultados;</li>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Identificação dos entrevistados;</li>
+<li>Preparação da entrevista;</li>
+<li>Condução da entrevista;</li>
+<li>Conclusão da entrevista.</li>
+</ul>
+</li>
+<li>A identificação dos entrevistados incluirá alguns <em>stakeholders</em>;</li>
+<li>No mínimo, devem ser entrevistados o cliente e alguns utilizadores do sistema;</li>
+<li>Visto que não se poderá entrevistar todos os utilizadores de um produto, deve ser escolhida uma amostra representativa da comunidade de utilizadores para ser entrevistada;</li>
+<li>A identifcação dos entrevistados não precisa de ser finalizada antes do início da entrevista;</li>
+<li>É aceitável pedir opiniões acerca de outros indíviduos que deverão ser entrevistados.</li>
+<li>O entrevistador deverá explicar o contexto, os objetivos, a duração, os problemas a ser endereçados e a maneira como a informação da entrevista será tratada;</li>
+<li>Quando possível, modelos ou figuras podem ser utilizados de forma a encorajar o entrevistado a propôr alterações;</li>
+<li>Deverá ser utilizada, sempre que possível, a terminologia do problema.</li>
+</ul>
+<h5 id="estudos"><a class="header" href="#estudos">Estudos</a></h5>
+<ul>
+<li>É uma técnica que utiliza um questionário para colecionar informação com as respostas de diversos indivíduos;</li>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Identificar a audiência e os objetivos;</li>
+<li>Conceber o questionário;</li>
+<li>Escolher a amostra;</li>
+<li>Recrutar participantes;</li>
+<li>Conduzir o estudo.</li>
+</ul>
+</li>
+<li>Quando o mesmo questionário é utilizado para todas as pessoas, torna-se possível o tratamento estatístico das respostas colecionadas;</li>
+<li>O sucesso é muito dependente da maneira como o questionário é concebido;</li>
+<li>Se as questões não estiverem bem focadas, forem mal formuladas ou aparecerem numa ordem errada, as respostas ao questionário poderão ser enganadoras;</li>
+<li>Deve evitar-se a utilização de questões negativas;</li>
+<li>Deve ser utilizada como uma técnica preliminar que irá ajudar na preparação das entrevistas.</li>
+</ul>
+<h5 id="introspeção"><a class="header" href="#introspeção">Introspeção</a></h5>
+<ul>
+<li>É a técnica mais básica, óbvia e rudimentar da elicitação de requisitos;</li>
+<li>O analista define os requisitos para um dado sistema baseado naquilo que pensa acerca das necessidades dos <em>stakeholders</em>;</li>
+<li>Muito utilizada, nomeadamente quando os engenheiros de requisitos têm um conhecimento vasto acerca do domínio do problema;</li>
+<li>Pode ser usada apenas como um ponto de partida para a adoção de outras técnicas de elicitação de requisitos.</li>
+</ul>
+<h4 id="grupos"><a class="header" href="#grupos">Grupos</a></h4>
+<h5 id="brainstorming"><a class="header" href="#brainstorming"><em>Brainstorming</em></a></h5>
+<ul>
+<li>Facilita a geração de ideias;</li>
+<li>Congrega um grupo de 5 a 12 pessoas;</li>
+<li>O grupo sugere e explora o máximo de ideia possível, sem julgar ou criticar essas ideias;</li>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Geração de ideias;</li>
+<li>Consolidação de ideias.</li>
+</ul>
+</li>
+</ul>
+<h4 id="artefactos"><a class="header" href="#artefactos">Artefactos</a></h4>
+<h5 id="análise-do-domínio"><a class="header" href="#análise-do-domínio">Análise do Domínio</a></h5>
+<ul>
+<li>Análise da documentação e o estudo dos sistemas existentes é uma fonte de requisitos;</li>
+<li>É importante para obter um maior conhecimento acerca do domínio do problema;</li>
+<li>O objetivo é examinar o domínio em que o sistema se encontra, de forma a identificar elementos comuns em todos os sistemas desse domínio;</li>
+<li>Os artefactos do projeto atual devem ser guardados, de forma a ser possível o uso desta técnica no futuro.</li>
+</ul>
+<h5 id="prototipagem"><a class="header" href="#prototipagem">Prototipagem</a></h5>
+<ul>
+<li>Serve como mecanismo para capturar os requisitos;</li>
+<li>É baseada no seguinte processo iterativo:
+<ul>
+<li>Elicitação de Requisitos;</li>
+<li>Construção de Protótipos;</li>
+<li>Teste dos Protótipos;</li>
+<li>Recomeça o processo.</li>
+</ul>
+</li>
+<li>Assim que é considerado que os requisitos do cliente estão corretamente compreendidos, o protótipo é abandonado.</li>
+</ul>
+<h5 id="personas"><a class="header" href="#personas"><em>Personas</em></a></h5>
+<ul>
+<li>Uma <em>persona</em> é uma pessoa fictícia que represente um tipo de utilizador importante no produto em desenvolvimento;</li>
+<li>É um arquétipo das pessoas que fazem parte da audiência alvo;</li>
+<li>É uma técnica de segmentação de mercado</li>
+</ul>
+<p><img src="images/example_persona.png" alt="image Exemplo" /></p>
+<ul>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Identificar o problema;</li>
+<li>Criar as personas;</li>
+<li>Introduzir as personas;</li>
+<li>Utilizar as personas;</li>
+<li>Avaliar as personas.</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="chapter_7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="chapter_7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

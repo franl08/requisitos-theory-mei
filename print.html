@@ -1,0 +1,1760 @@
+<!DOCTYPE HTML>
+<html lang="pt" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Teóricas de RAS</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Teórica 01</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Teórica 02</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Teórica 03</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> Teórica 04</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> Teórica 05</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">6.</strong> Teórica 06</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">7.</strong> Teórica 07</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">8.</strong> Teórica 08</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">9.</strong> Teórica 09</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">10.</strong> Teórica 10</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">11.</strong> Teórica 11</a></li><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">12.</strong> Teórica 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">13.</strong> Teórica 13</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Teóricas de RAS</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="teórica-01"><a class="header" href="#teórica-01">Teórica 01</a></h1>
+<h2 id="ciclo-de-vida-de-desenvolvimento"><a class="header" href="#ciclo-de-vida-de-desenvolvimento">Ciclo de Vida de Desenvolvimento</a></h2>
+<p>Análise → Conceção da Solução → Programação</p>
+<p>Sendo que a fase de <strong>Teste</strong> deverá ocupar todo o ciclo do desenvolvimento.</p>
+<h2 id="produtosserviços-vs-sistemas"><a class="header" href="#produtosserviços-vs-sistemas">Produtos/Serviços <em>vs</em> Sistemas</a></h2>
+<p><strong>Produtos/Serviços</strong>:</p>
+<ul>
+<li>Vão para o Mercado (<em>mass market</em>);</li>
+<li>Serão utilizados por muita gente;</li>
+<li>Recusam requisitos &quot;estranhos&quot;, visto que têm como público-alvo uma grande quantidade de pessoas.</li>
+</ul>
+<p><strong>Sistemas</strong>:</p>
+<ul>
+<li>Restringidos e feitos à medida da equipa que pretende utilizar o sistema;</li>
+<li>Cumprem <strong>todos</strong> os requisitos da equipa.</li>
+</ul>
+<h2 id="avaliação-da-uc"><a class="header" href="#avaliação-da-uc">Avaliação da UC</a></h2>
+<p>\[ 0.6*teste/exame + 0.4*projeto \]</p>
+<ul>
+<li>Nota mínima de 8 valores no teste (não arredonda);</li>
+<li>Nota mínima de 9.5 valores no trabalho.
+<ul>
+<li>Os grupos de 3 têm bonificação de 0.3 e os grupos de 4 têm bonificação de 0.2.</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-02"><a class="header" href="#teórica-02">Teórica 02</a></h1>
+<h2 id="requisito"><a class="header" href="#requisito">Requisito</a></h2>
+<ul>
+<li>Uma necessidade de alguém;</li>
+<li>Utilizado no contexto de um sistema que <strong>ainda</strong> não está construído;
+<ul>
+<li>Quando estiver finalizado passar a ser uma <em>feature</em> do sistema.</li>
+</ul>
+</li>
+</ul>
+<h2 id="tipos-de-requisitos"><a class="header" href="#tipos-de-requisitos">Tipos de Requisitos:</a></h2>
+<ul>
+<li><strong>De Sistema</strong>: aquilo que a comunidade precisa;</li>
+<li><strong>De Utilizador</strong>: a solução para aquilo que a comunidade precisa.</li>
+</ul>
+<h2 id="classificação-de-requisitos"><a class="header" href="#classificação-de-requisitos">Classificação de Requisitos:</a></h2>
+<ul>
+<li><strong>Funcionais</strong>;</li>
+<li><strong>Não-funcionais</strong>.</li>
+</ul>
+<p>No entanto, esta classificação não é rigorosa, sendo subjetiva de pessoa para pessoa.</p>
+<h3 id="nota"><a class="header" href="#nota">NOTA:</a></h3>
+<ul>
+<li><strong>Requisito Candidato</strong>: Um requisito que será negociado.</li>
+</ul>
+<h2 id="requisitos-funcionais"><a class="header" href="#requisitos-funcionais">Requisitos Funcionais</a></h2>
+<ul>
+<li>Funcionalidade que será disponibilizada aos utilizadores do sistema;</li>
+<li>Não devem, se possível, mencionar aspetos tecnológicos.
+<ul>
+<li>&quot;Devem focar-se no problema, não na solução.&quot;</li>
+</ul>
+</li>
+<li>O conjunto de requisitos deve ser completo e coerente.</li>
+</ul>
+<h2 id="requisitos-implícitos-vs-explícitos"><a class="header" href="#requisitos-implícitos-vs-explícitos">Requisitos Implícitos <em>vs</em> Explícitos</a></h2>
+<ul>
+<li><strong>Implícitos</strong>: Requisitos tão óbvios que podem não ser documentados, mas são incluídos na solução pretendida;</li>
+<li><strong>Explícitos</strong>: Requisitos pedidos de forma expressa.</li>
+</ul>
+<h2 id="requisitos-não-funcionais"><a class="header" href="#requisitos-não-funcionais">Requisitos Não-Funcionais</a></h2>
+<p>Também denominados por atributos de qualidade.</p>
+<p>A arquitetura depende apenas destes requisitos.</p>
+<ul>
+<li>
+<p>Conjunto de restrições impostos ao sistema;</p>
+</li>
+<li>
+<p>Devemos discuti-los com o cliente de forma a verificar a importância do requisito ou desconhecimento acerca do tema abordado;</p>
+<ul>
+<li>Quando os requisitos falam de soluções, devemos apurar as razões para verificar se a solução é realmente adequada.</li>
+</ul>
+</li>
+<li>
+<p>Requisitos não-funcionais, <strong>em princípio</strong>, não alteram as funcionalidades do sistema.</p>
+</li>
+<li>
+<p>Se não ligarmos a estes requisitos, podemos acabar com soluções inadequadas ou, até mesmo, monolíticas.</p>
+</li>
+</ul>
+<h3 id="nota-1"><a class="header" href="#nota-1">NOTA:</a></h3>
+<ul>
+<li><strong>Propriedades emergentes</strong>: decorrem do sistema como um todo, ou seja, são diferentes das propriedades que se verificam com a soma das diversas partes do sistema antes deste estar concluído.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-03"><a class="header" href="#teórica-03">Teórica 03</a></h1>
+<h2 id="categorias-de-requisitos-não-funcionais"><a class="header" href="#categorias-de-requisitos-não-funcionais">Categorias de Requisitos Não Funcionais</a></h2>
+<ol>
+<li><strong>Aparência</strong>: aspeto e estética do sistema;</li>
+<li><strong>Usabilidade</strong>: facilidade de utilização que permite uma utilização amigável;</li>
+<li><strong>Eficiência</strong>: velocidade, <em>real-time</em>, capacidade de armazenamento e correção de execução;</li>
+<li><strong>Operacional</strong>: Características acerca daquilo que o sistema deverá fazer corretamente no ambiente em que se encontra;</li>
+<li><strong>Manutenção e Suporte</strong>: Atributos que permitem que o sistema seja mantido, reparado e evoluído, adicionando novas funcionalidades;</li>
+<li><strong>Segurança</strong>: Problemas relacionados ao acesso, confidencialidade, proteção e integridade de dados;</li>
+<li><strong>Cultrais e Políticos</strong>: Fatores relacionados com a cultura e os hábitos dos <em>stakeholders</em>;</li>
+<li><strong>Legais</strong>: Leis que se devem aplicar ao funcionamento do sistema.</li>
+</ol>
+<h3 id="usabilidade"><a class="header" href="#usabilidade">Usabilidade</a></h3>
+<ul>
+<li>Aspeto crítico em muitas <em>apps</em>;</li>
+<li>As <em>apps</em> devem ser intuitivas;</li>
+<li>A usabilidade depende da facilidade em utilizar a aplicação;</li>
+<li>Oferecer a disponibilidade de personalização ao cliente pode ser um aspeto benéfico;</li>
+<li>A aprendizagem de utilização da <em>app</em> deve ser intuitiva, sem ser necessária a consulta de documentação.</li>
+</ul>
+<p><strong>Exemplos</strong>:</p>
+<ul>
+<li>&quot;O produto deve ser fácil de usar por pessoas analfabetas&quot;;</li>
+<li>&quot;O produto deve ser intuitivo para ser usado por crianças de 4 anos&quot;.</li>
+</ul>
+<h3 id="manutenção-e-suporte"><a class="header" href="#manutenção-e-suporte">Manutenção e Suporte</a></h3>
+<ul>
+<li>Existem 4 tipos de manutenção:
+<ul>
+<li>Preventiva;</li>
+<li>Corretiva;</li>
+<li>Perfetiva;</li>
+<li>Adaptativa.</li>
+</ul>
+</li>
+<li>A <em>app</em> deve ser feita <em>à priori</em> a pensar na manutenção, ou seja, de forma a facilitar as modificações.</li>
+</ul>
+<p><strong>Exemplos</strong>:</p>
+<ul>
+<li>&quot;O código fonte do programa deverá conter comentários&quot;.</li>
+</ul>
+<h3 id="legais"><a class="header" href="#legais">Legais</a></h3>
+<ul>
+<li>Em certos domínios é crucial;</li>
+<li>Todos os sistemas, independentemente da tecnologia, devem respeitar certas regras estabelecidas;</li>
+<li>Podem ser consultados advogados, solicitadores e juristas para saber se a aplicação é legal.</li>
+</ul>
+<p><strong>Exemplos</strong>:</p>
+<ul>
+<li>&quot;O produto deve ser certificado pela Autoridade Tributária&quot;.</li>
+</ul>
+<h2 id="requisitos-de-utilizador"><a class="header" href="#requisitos-de-utilizador">Requisitos de Utilizador</a></h2>
+<ul>
+<li>Representam:
+<ul>
+<li>Uma funcionalidade que é expectável que o sistema providencie aos utilizadores;</li>
+<li>Uma restrição que deve ser aplicada a uma operação do sistema.</li>
+</ul>
+</li>
+<li>Encontram-se relacionados com o problema do domínio;</li>
+<li>São expressas sem um grande rigor matemático, utilizando linguagem corrente e diagramas informais, permitindo assim a leitura, análise e discussão dos requisitos por parte dos <em>stakeholders</em>;</li>
+<li>Pode ser ao nível dos requisitos funcionais ou dos requisitos não-funcionais.</li>
+</ul>
+<h2 id="requisitos-de-sistema"><a class="header" href="#requisitos-de-sistema">Requisitos de Sistema</a></h2>
+<ul>
+<li>Constituem uma especificação mais detalhada de um requisito, sendo geralmente um modelo formal do sistema;</li>
+<li>São orientados ao domínio da solução, ajudando os engenheiros no <em>design</em> e construção do sistema;</li>
+<li>Muitas vezes são especificações de requisitos de utilizador;</li>
+<li>São documentados numa linguagem mais técnica (p.e. diagramas de sequência);</li>
+<li>É desejável que sejam independentes do <em>design</em> e das pré-decisões de implementação.</li>
+</ul>
+<h2 id="engenharia-de-requisitos-ou-análise"><a class="header" href="#engenharia-de-requisitos-ou-análise">Engenharia de Requisitos (ou Análise)</a></h2>
+<ul>
+<li>Designa todas as atividades relacionadas com requisitos;</li>
+<li>Vai buscar as técnicas e as diversas áreas;</li>
+<li>Transforma descrições informais do mundo real para um formato documentado com especificações.</li>
+</ul>
+<p><strong>Objetivos</strong></p>
+<ul>
+<li>Ajudar as equipas de desenvolvimento a perceber o problema;</li>
+<li>Aumentar as hipóteses de entregar um produto que irá satisfazer o que o utilizador pretende;</li>
+<li>Fazer um conjunto de requisitos completo;</li>
+<li>Arranjar acordos entre possíveis partes antagónicas;</li>
+<li>Documentação completa de requisitos.</li>
+</ul>
+<h3 id="separação-da-solução"><a class="header" href="#separação-da-solução">Separação da Solução</a></h3>
+<ul>
+<li>Devemos manter, sempre que possível, uma separação entre os requisitos e a solução;</li>
+<li>Requisitos devem ser focados na necessidade do cliente.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-04"><a class="header" href="#teórica-04">Teórica 04</a></h1>
+<h2 id="engenharia-de-requisitos"><a class="header" href="#engenharia-de-requisitos">Engenharia de Requisitos</a></h2>
+<h3 id="atividades"><a class="header" href="#atividades">Atividades</a></h3>
+<h4 id="inception"><a class="header" href="#inception"><em>Inception</em></a></h4>
+<ul>
+<li>Inicia-se com base na necessidade da existência do sistema;
+<ul>
+<li><strong>Sistemas à medida</strong>: Feitos para um grupo específico;</li>
+<li><strong>Produtos</strong>: Para o mercado.</li>
+</ul>
+</li>
+<li>Estuda-se a viabilidade do projeto.
+<ul>
+<li>&quot;Vai-se gastar \( x \) e ganhar \( y \)&quot;.</li>
+</ul>
+</li>
+</ul>
+<h4 id="elicitação-ou-levantamento-de-requisitos"><a class="header" href="#elicitação-ou-levantamento-de-requisitos">Elicitação ou Levantamento de Requisitos</a></h4>
+<ul>
+<li>Responsável por gerir a forma como os requisitos são obtidos;</li>
+<li>As técnicas de elicitação devem:
+<ul>
+<li>Identificar as fontes dos requisitos;</li>
+<li>Ajudar as diversas partes interessadas as descrever corretamente os requisitos.</li>
+</ul>
+</li>
+<li>Precisa de interações profundas com os <em>stakeholders</em>;</li>
+<li>Técnicas de elicitação:
+<ul>
+<li>Entrevistas;</li>
+<li>Estudos;</li>
+<li>Introspeção;</li>
+<li>Etnografia;</li>
+<li><em>Focus Group</em>;</li>
+<li>Trabalho cooperativo;</li>
+<li>Análise do Domínio;</li>
+<li>Orientado a Objetos;</li>
+<li><em>Prototyping</em>;</li>
+<li>Cenários;</li>
+<li>Modelação de Objetivos;</li>
+<li><em>Personas</em>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="elaboração"><a class="header" href="#elaboração">Elaboração</a></h4>
+<ul>
+<li>Tem como objetivo analisar e classificar os requisitos elicitados, no entanto não pretende tratá-los;</li>
+<li>É comum organizar os requisitos em grupos coesos;</li>
+<li>O analista deverá intervir nos casos em que os requisitos:
+<ul>
+<li>Não fazem sentido;</li>
+<li>Apresentação contradições entre eles;</li>
+<li>São incoerentes;</li>
+<li>São incompletos;</li>
+<li>São vagos.</li>
+</ul>
+</li>
+</ul>
+<h4 id="negociação"><a class="header" href="#negociação">Negociação</a></h4>
+<ul>
+<li>A engenharia de requisitos necessita de comunicação e negociação entre os diversos <em>stakeholders</em>;</li>
+<li>É inevitável que situações de conflito sejam geradas;</li>
+<li>Assim, é necessário promover mecanismos de negociação entre os <em>stakeholders</em>, sendo que o seu resultado poderá ter um grande impacto na aceitação do produto final;</li>
+<li>Outra forma de gerir estes conflitos consiste na adoção de um modelo de prioritização.</li>
+</ul>
+<h4 id="documentação"><a class="header" href="#documentação">Documentação</a></h4>
+<ul>
+<li>Os documentos de requisitos servem como referência principal para as seguintes fases do processo de desenvolvimento;</li>
+<li>Um documento de requisitos é organizado de acordo com 2 diferentes perspetivas:
+<ul>
+<li><strong>Requisitos de Utilizador</strong>: descreve as expectativas e necessidades dos utilizadores;</li>
+<li><strong>Requisitos de Sistema</strong>: estabelece a ligação entre o cliente e a equipa de desenvolvimento.</li>
+</ul>
+</li>
+<li>A estrtura e formalidade da documentação deverá variar tendo em conta as características do sistema e os processos adotados.</li>
+</ul>
+<h4 id="validação"><a class="header" href="#validação">Validação</a></h4>
+<ul>
+<li>Tem por objetivo garantir que os requisitos levantados definem o sistema que o cliente deseja;</li>
+<li>É uma atividade de <em>testing</em>;</li>
+<li>Esta etapa pode ser realizada em simultâneo com outras atividades características da engenharia de requisitos.</li>
+</ul>
+<h4 id="gestão"><a class="header" href="#gestão">Gestão</a></h4>
+<ul>
+<li>O conjunto de requisitos encontra-se em constante mudança, assim, são necessários mecanismos de gestão de forma a avaliar o impacto que as mudanças nos requisitos terão no projeto final;</li>
+<li>Devem rejeitar-se as mudanças que impliquem:
+<ul>
+<li>Um aumento significativo no custo;</li>
+<li>O adiamento da data de entrega final;</li>
+<li>Uma desvalorização do sistema por parte do utilizador.</li>
+</ul>
+</li>
+<li>Assim, esta atividade pretende fornecer ajuda à equipa de desenvolvimento para identificarem, controlarem e gerirem os requisitos e as suas mudanças.</li>
+</ul>
+<h3 id="desafios-e-problemas"><a class="header" href="#desafios-e-problemas">Desafios e Problemas</a></h3>
+<h4 id="dificuldades"><a class="header" href="#dificuldades">Dificuldades</a></h4>
+<ul>
+<li>Pretende caracterizar o problema em mãos com rigor;</li>
+<li>Problemas de comunicação entre os engenheiros de requisitos e os utilizadores são comuns;</li>
+<li>Geralmente, os utilizadores apresentam dificuldades a expressar as suas necessidades reais de uma forma concreta e percetível;</li>
+<li>Em muitas ocasiões, os utilizadores apenas têm uma vaga ideia daquilo que pretendem.</li>
+</ul>
+<h4 id="dificuldades-e-soluções"><a class="header" href="#dificuldades-e-soluções">Dificuldades e Soluções</a></h4>
+<ul>
+<li><strong>Dificuldade</strong>: O cliente não é capaz de verbalizar aquilo que pretende;
+<ul>
+<li><strong>Solução</strong>: Observar o cliente a utilizar a aplicação em contexto real.</li>
+</ul>
+</li>
+<li><strong>Dificuldade</strong>: O cliente não reparou que explicou o problema de forma incorreta até receber a solução que não o resolve;
+<ul>
+<li><strong>Solução</strong>: Antes de se iniciar o desenvolvimento de uma possível solução, deve verificar-se se o problema está bem formulado e corresponde à realidade.</li>
+</ul>
+</li>
+<li><strong>Dificuldade</strong>: O engenheiro acredita saber mais acerca dos problemas que o cliente em si.
+<ul>
+<li><strong>Solução</strong>: Deixar que o engenheiro sinta as dificuldades dos utilizadores em contexto real.</li>
+</ul>
+</li>
+</ul>
+<h3 id="johari-window"><a class="header" href="#johari-window"><em>Johari Window</em></a></h3>
+<p><img src="images/johari_window.png" alt="image Johari Window" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-05"><a class="header" href="#teórica-05">Teórica 05</a></h1>
+<h2 id="escrever-numa-linguagem-natural"><a class="header" href="#escrever-numa-linguagem-natural">Escrever numa Linguagem Natural</a></h2>
+<h3 id="template-para-um-documento-de-requisitos"><a class="header" href="#template-para-um-documento-de-requisitos"><em>Template</em> para um Documento de Requisitos</a></h3>
+<h4 id="necessita-de-uma-estrutura"><a class="header" href="#necessita-de-uma-estrutura">Necessita de uma estrutura</a></h4>
+<ul>
+<li>A equipa do projeto é responsável pela edição do documento de requisitos;</li>
+<li>É uma atividade que necessita de um grande cuidado, nomeadamente relativo aos detalhes do documento;</li>
+<li>A definição de um <em>template</em> genérico para este tipo de documentos revela-se um aspeto importante, tendo em conta a existência de um largo número de engenheiros de sistemas e de projetos;</li>
+<li>Sem um <em>template</em>, os graus de liberdade seriam excessivo, permitindo que os documentos fossem muito diferentes de caso para caso;</li>
+<li>Muito útil, sobretudo, para sistemas muito complexos.</li>
+</ul>
+<h4 id="estrutura-genérica"><a class="header" href="#estrutura-genérica">Estrutura Genérica</a></h4>
+<p><img src="images/template_doc.png" alt="image Estrutura Genérica" /></p>
+<h3 id="guias-para-a-escrita"><a class="header" href="#guias-para-a-escrita">Guias para a Escrita</a></h3>
+<h4 id="escrita-de-requisitos"><a class="header" href="#escrita-de-requisitos">Escrita de Requisitos</a></h4>
+<ul>
+<li>Os requisitos devem ser escritos em linguagem natural;</li>
+<li>Não é expectável que todos os <em>stakeholders</em> sejam capazes de interpretar corretamente especificações de requisitos formais;</li>
+<li>A escrita de requisitos precisa de treino e prática, de forma a ser aperfeiçoada.</li>
+</ul>
+<h4 id="pontos-a-considerar"><a class="header" href="#pontos-a-considerar">Pontos a Considerar</a></h4>
+<h5 id="escrita-técnica"><a class="header" href="#escrita-técnica">Escrita Técnica</a></h5>
+<ul>
+<li>A escrita de requisitos deve obedecer às regras básicas da escrita técnica;</li>
+<li>A linguagem usada deve ser simples, clara e precisa;</li>
+<li>As palavras escolhidas não devem ter outras possíveis interpretações;</li>
+<li>A escrita técnica deve ser impessoal, objetiva, clara, respeituosa e formal.</li>
+</ul>
+<h5 id="formato-standard-para-requisitos-de-utilizador"><a class="header" href="#formato-standard-para-requisitos-de-utilizador">Formato <em>standard</em> para requisitos de utilizador</a></h5>
+<ul>
+<li><strong>Assunto</strong> que indica o tipo de utilizadores que irá beneficiar desse requisito;</li>
+<li><strong>Resultado</strong> que se deve alcançar no caso de se cumprir o requisito;</li>
+<li>Um mecanismo que permita efetuar testes ao requisito definido.</li>
+</ul>
+<p><img src="images/user_req.png" alt="image Formato Requisito de Utilizador" /></p>
+<h5 id="user-stories"><a class="header" href="#user-stories"><em>User Stories</em></a></h5>
+<ul>
+<li>Certos métodos <em>agile</em> propõem a adoção de um formato diferente.</li>
+<li>Uma <em>user story</em> é uma descrição simples e curta da funcionalidade, feita na perspetiva da pessoa que precisa dela;</li>
+<li>É materializada segundo um conjunto de frases que descrevem o que é que os utilizadores necessitam;</li>
+<li><strong>Formato</strong>:
+<ul>
+<li>&quot;<strong>Como um</strong> &lt;tipo do utilizador&gt;, <strong>pretendo</strong> &lt;objetivo&gt; <strong>porque</strong> &lt;razão&gt;.&quot;.</li>
+</ul>
+</li>
+<li>Este formato coloca o utilizador como o foco principal e facilita a identificação das fontes.</li>
+</ul>
+<h5 id="formato-standard-para-requisitos-de-sistema"><a class="header" href="#formato-standard-para-requisitos-de-sistema">Formato <em>standard</em> para requisitos de sistema</a></h5>
+<ul>
+<li><strong>Assunto</strong>, seja o sistema sobre desenvolvimento ou a entidade de <em>design</em> relacionada ao requisito;</li>
+<li><strong>Resultado</strong> que se deve alcançar no caso de se cumprir o requisito.</li>
+</ul>
+<p><img src="images/sys_req.png" alt="image Formato Requisito de Utilizador" /></p>
+<h5 id="formato-standard-para-requisitos-não-funcionais"><a class="header" href="#formato-standard-para-requisitos-não-funcionais">Formato <em>standard</em> para requisitos não funcionais</a></h5>
+<ul>
+<li>O sistema em desenvolvimento ou a entidade de <em>design</em> relacionada ao requisito;</li>
+<li>A qualidade que deve ser alcançada com o requisito;</li>
+<li>Exemplos:
+<ul>
+<li>O produto deve ser fácil de utilizar por pessoas iliteradas;</li>
+<li>O produto deve continuar a funcionar 30m debaixo de água...</li>
+</ul>
+</li>
+</ul>
+<h5 id="frases-curtas-e-simples"><a class="header" href="#frases-curtas-e-simples">Frases Curtas e Simples</a></h5>
+<ul>
+<li>Cada requisito deve ser representado por uma frase e cada frase deverá representar apenas um requisito;</li>
+<li>O objetivo é que se tenha todos os requisitos escritos de forma clara e, para isso, devem utilizar-se frases curtas e simples;</li>
+<li>As frases devem ser afirmativas e escritas numa voz ativa;</li>
+<li>Referências a outros documentos devem ser evitadas.</li>
+</ul>
+<h5 id="vocabulário-limitado"><a class="header" href="#vocabulário-limitado">Vocabulário Limitado</a></h5>
+<ul>
+<li>Deve evitar-se a utilização de termos que podem criar confusão, especialmente sinónimos de conceitos importantes;</li>
+<li>Acrónimos e abreviações devem ser utilizados com muito cuidado;</li>
+<li>Deve evitar-se a utilização de sinónimos, mesmo que isso faça o texto repetitivo.</li>
+</ul>
+<h5 id="ambiguidade"><a class="header" href="#ambiguidade">Ambiguidade</a></h5>
+<ul>
+<li>As situações de ambiguidade devem ser corrigidas, com o objetivo de tornar uma frase o mais clara mais possível;</li>
+<li>De forma a deixar certas frases mais completas, estas podem ter como acrescento outras materiais como tabelas, figuras ou esquemas;</li>
+<li>A ambiguidade também é manifestada quando dois, ou mais, requisitos entram em choque;</li>
+<li>Uma das possíveis resoluções é através de técnicas de negociação.</li>
+</ul>
+<h5 id="terminologia-vaga"><a class="header" href="#terminologia-vaga">Terminologia Vaga</a></h5>
+<ul>
+<li>Deve evitar-se a utilização de expressões informais demasiado vagas para descrever características desejáveis de um sistema.
+<ul>
+<li>Por exemplo: fácil de usar, fácil de aprender, versátil, flexível, intuitiva, etc...</li>
+</ul>
+</li>
+<li>Deve complementar-se o requisito com critérios passíveis de verificação.</li>
+</ul>
+<h5 id="ilusões-e-fantasias"><a class="header" href="#ilusões-e-fantasias">Ilusões e Fantasias</a></h5>
+<ul>
+<li>Em casos de engenharia, nenhum componente é perfeito, assim, devemos evitar almejar características impossíveis;</li>
+<li>A equipa do projeto deverá ter uma atitude realista, rejeitando qualquer requisito irrealista;</li>
+<li><strong>Não usar</strong>: 100% fiável, totalmente segura, nunca falha, satisfaz todos os utilizadores, é capaz de lidar com situações impresíveis.</li>
+</ul>
+<h5 id="múltiplos-requisitos"><a class="header" href="#múltiplos-requisitos">Múltiplos Requisitos</a></h5>
+<ul>
+<li>Requisitos que contêm conjunções de coordenação são muito suscetíveis à criação de situações ambíguas;</li>
+<li>Evitar a utilização de <em>FANBOYS</em> (<em>for, and, nor, but, or, yet, so</em>);</li>
+<li>Nestes casos a solução é separar o requisito em múltiplos requisitos mais simples.</li>
+</ul>
+<h5 id="design"><a class="header" href="#design"><em>Design</em></a></h5>
+<ul>
+<li>Deve-se evitar dizer como é que o sistema irá satisfazer um dado requisito, visto isto restringir as possíveis soluções e entrar em demasiado detalhe no requisito de forma prematura;</li>
+<li>O foco do processo de escrita deve ser nas funcionalidades que a aplicação deverá providenciar ao utilizar;</li>
+<li>A referência a nomes de componentes, materiais, campos de bases de dados ou aspetos técnicos deve ser evitada.</li>
+</ul>
+<h5 id="planos-de-projeto"><a class="header" href="#planos-de-projeto">Planos de Projeto</a></h5>
+<ul>
+<li>Os planos de projeto e o seu agendamento são aspetos importantes a considerar, <strong>no entanto</strong>, estes não devem ser inseridos no documento de requisitos;</li>
+<li>Não devem existir referências a datas, fases ou atividades do projeto (esta informação deve estar no plano do projeto).</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-06"><a class="header" href="#teórica-06">Teórica 06</a></h1>
+<h2 id="elicitação-de-requisitos"><a class="header" href="#elicitação-de-requisitos">Elicitação de Requisitos</a></h2>
+<h3 id="scope"><a class="header" href="#scope"><em>Scope</em></a></h3>
+<ul>
+<li>A elicitação de requisitos permite a compreensão de quais são os requisitos de um dado sistema;</li>
+<li>Permite perceber as necessidades e expectativas dos <em>stakeholders</em> em relação ao produto;</li>
+<li>Estas atividades têm uma natureza comunicativa, o que envolve técnicas relacionadas às ciências sociais e teoria organizacional.</li>
+</ul>
+<h3 id="processo"><a class="header" href="#processo">Processo</a></h3>
+<p><img src="images/process_eli.png" alt="image processo" /></p>
+<ul>
+<li>As atividades relacionadas a requisitos não devem ser exclusivas da fase inicial do ciclo de vida do projeto;</li>
+<li>A equipa de desenvolvimento deverá adotar uma abordagem que permita trabalhar com os requisitos em todo o ciclo de vida do projeto.</li>
+</ul>
+<h4 id="tipo-de-atividades"><a class="header" href="#tipo-de-atividades">Tipo de Atividades</a></h4>
+<ul>
+<li>Engenheiros de Requisitos intervêm em principalmente 2 tipos de atividades:
+<ul>
+<li>Contactam pessoas que têm um bom conhecimento acerca do problema, o que lhes permite identificar as restrições que poderão limitar a solução para o problema;
+<ul>
+<li>Caracterizada por um certo grau de incerteza e um aumento da informação e conhecimento relativo ao problema.</li>
+</ul>
+</li>
+<li>Preparam o documento de requisitos que descreverá o comportamento e as características expectáveis do sistema.
+<ul>
+<li>Caracterizada pela organização de ideias, a resolução de pontos de vista conflituosos e a eliminição de inconsistências e ambiguidades.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="identificação-dos-stakeholders"><a class="header" href="#identificação-dos-stakeholders">Identificação dos <em>Stakeholders</em></a></h3>
+<ul>
+<li>São uma das principais fontes de informação durante o processo de elicitação;</li>
+<li>Um <em>system stakeholder</em> é alguém que tem algum tipo de interesse legítimo no sistema.
+<ul>
+<li>Poderá ser um grupo de pessoas ou organizações;</li>
+<li>O termo é interesse é bastante vago, podendo resultar da utilização do sistema ou em algum tipo de responsabilidade relacionado ao sistema.</li>
+</ul>
+</li>
+</ul>
+<h4 id="funções"><a class="header" href="#funções">Funções</a></h4>
+<ul>
+<li>Geralmente, o número de <em>stakeholders</em> de um projeto é elevado (\( \geq 6 \));</li>
+<li>A identificação dos <em>stakeholders</em> pode ser feita através da caracterização de funções ou posições existentes na organização;</li>
+<li>Alguns indivíduos poderão acumular diversas funções, o que provoca que seja necessário distinguir os indivíduos das suas funções.</li>
+</ul>
+<h4 id="formas-de-identificar"><a class="header" href="#formas-de-identificar">Formas de Identificar</a></h4>
+<ol>
+<li>Perguntar ao cliente;</li>
+<li>Examinar as posições da organização;</li>
+<li>Comparar o produto com outros semelhantes;</li>
+<li>Analisar o contexto do sistema;</li>
+<li>Consultar os <em>stakeholders</em> que são facilmente encontrados na maioria dos sistemas.</li>
+</ol>
+<h4 id="utilizador"><a class="header" href="#utilizador">Utilizador</a></h4>
+<ul>
+<li>Qualquer pessoa que irá operar ou interagir diretamente com o sistema, quando este estiver em operação funcional no seu ambiente.</li>
+<li>Deve ser claramente identificado, visto que o sistema será desenvolvido para si;</li>
+<li>Deve ser dada prioridade aos utilizadores que irão interagir com o sistema mais frequentemente.</li>
+</ul>
+<h5 id="particularidades"><a class="header" href="#particularidades">Particularidades</a></h5>
+<p>É recomendada a coleção de informações para compreender se existe alguma particularidade a ser registada para a interação com o sistema de algum dos seguintes grupos de pessoas:</p>
+<ul>
+<li>Deficientes ou de mobilidade reduzida;</li>
+<li>Com baixa nível de literacia;</li>
+<li>Não dominam a linguagem principal do sisteam;</li>
+<li>Com dificuldades visuais;</li>
+<li>Que transportam ou manuseiam substâncias e objetos;</li>
+<li>Com pouca habilidade para trabalhar com sistemas informáticos.</li>
+</ul>
+<h4 id="cliente"><a class="header" href="#cliente">Cliente</a></h4>
+<ul>
+<li>Entidade que encomenda e paga o desenvolvimento de um sistema;</li>
+<li>Geralmente, a encomenda é feita após uma negociação do preço com o produtor;</li>
+<li>Esta relação é, recorrentemente, formalizada através de um contrato;</li>
+<li>O cliente deverá ser providenciado com a documentação técnica completa que lhe permitirá a instalação e manutenção do sistema ao longo do seu ciclo de vida;</li>
+<li>Tem o poder para decidir acerca de diversos assuntos, nomeadamente o escopo, as funcionalidades e o custo;</li>
+<li>Nem sempre são utilizadores do sistema.</li>
+</ul>
+<h4 id="comprador"><a class="header" href="#comprador">Comprador</a></h4>
+<ul>
+<li>Alguém que paga para adquirir um sistema assim que este esteja pronto;</li>
+<li>São os maiores consumidores do sistema e este é construído à sua medida;</li>
+<li>Em muitos casos, o nome dos compradores sabe-se muito antes do início do desenvolvimento da aplicação;</li>
+<li>O ato de comprar não precisa de estar associado com uma transação financeira entre o comprador e o vendedor.</li>
+</ul>
+<h4 id="segmento-do-mercado"><a class="header" href="#segmento-do-mercado">Segmento do Mercado</a></h4>
+<ul>
+<li>Definido pela caracterização de necessidades ou comportamentos comuns dos compradores para os quais é orientado um dado um produto;</li>
+<li>O grupo de compradores representa um segmento do mercado se:
+<ul>
+<li>As suas necessidades exigem e justificam uma oferta diferente;</li>
+<li>São abordados através de diferentes canais de distribuição;</li>
+<li>Têm diferentes tipos de relações;</li>
+<li>Têm níveis significativamente diferentes de lucro;</li>
+<li>Estão dispostos a pagar por aspetos diferentes da oferta.</li>
+</ul>
+</li>
+</ul>
+<h4 id="negative-stakeholder"><a class="header" href="#negative-stakeholder"><em>Negative Stakeholder</em></a></h4>
+<ul>
+<li>Alguém que deseja que o sistema não seja desenvolvido;</li>
+<li>As suas atitudes podem variar de uma oposição pacífica a uma hostilidade ativa;</li>
+<li>A identificação de <em>negative stakeholders</em> poderá permitir a identificação de indivíduos que pretendam sabotar o desenvolvimento do sistema;</li>
+<li>A sua presença nas atividades de elicitação de requisitos é importante de forma a identificar e compreender as relações pessoais e políticas numa organização.</li>
+</ul>
+<h3 id="técnicas-para-elicitação-de-requisitos"><a class="header" href="#técnicas-para-elicitação-de-requisitos">Técnicas para elicitação de requisitos</a></h3>
+<h4 id="competências"><a class="header" href="#competências">Competências</a></h4>
+<ul>
+<li>Competências genéricas necessárias para um engenheiro de requisitos:
+<ul>
+<li><strong>Questionar</strong>: ser capaz de questionar as pessoas certas acerca dos requisitos;</li>
+<li><strong>Observar</strong>: observar os comportamentos dos utilizadores para com produtos existentes, sistemas ou processos, de forma a inferir as suas necessidades;</li>
+<li><strong>Discutir</strong>: argumentar com utilizadores acerca das suas necessidades, com o objetivo de formular uma compreensão acerca dos requisitos;</li>
+<li><strong>Negociar</strong>: facilitar a negociação entre os utilizadores de forma alcançar soluções aceitáveis acerca dos requisitos a serem incluídos, removidos ou alterados;</li>
+<li><strong>Supor</strong>: antecipar-se acerca das funcionalidades que os utilizadores poderão necessitar ou desejar, especialmente para a criação de produtos <em>mass-market</em>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="grupos-de-técnicas"><a class="header" href="#grupos-de-técnicas">Grupos de Técnicas</a></h4>
+<ul>
+<li><em><strong>Marketing</strong></em>: existe um interesse especial nos requisitos que contribuam para o sucesso comercial do sistema;</li>
+<li><strong>Psicologia e Sociologia</strong>: enfatiza a satisfação das necessidades dos utilizadores, dos indíviduos e dos agentes sociais;</li>
+<li><strong><em>Design</em> Participativo</strong>: existe um envolvimento ativo por parte dos utilizadores na definição dos requisitos;</li>
+<li><strong>Fatores Humanos e Interação Pessoa-Máquina</strong>: foco na interação dos utilizadores com o sistema;</li>
+<li><strong>Qualidade</strong>: principal interesse na relação entre os requisitos e a qualidade do sistema;</li>
+<li><strong>Métodos Formais</strong>: interesse na precisão e rigor matemático na especificação de requisitos.</li>
+</ul>
+<p>Existem 3 grandes grupos de técnicas:</p>
+<ol>
+<li>Individuais;</li>
+<li>Grupos de Pessoas;</li>
+<li>Artefactos.</li>
+</ol>
+<h4 id="individuais"><a class="header" href="#individuais">Individuais</a></h4>
+<ul>
+<li>Entrevistas;</li>
+<li>Estudos;</li>
+<li>Introspeção;</li>
+<li>Etnografia.</li>
+</ul>
+<h5 id="entrevistas"><a class="header" href="#entrevistas">Entrevistas</a></h5>
+<ul>
+<li>Não possuem regras exatas ou fórmulas, dando uma grande liberdade ao entrevistador;</li>
+<li>Por vezes, apresentam resultados de baixa qualidade;</li>
+<li>Devem ser conduzidas de forma estruturada para que apresentem bons resultados;</li>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Identificação dos entrevistados;</li>
+<li>Preparação da entrevista;</li>
+<li>Condução da entrevista;</li>
+<li>Conclusão da entrevista.</li>
+</ul>
+</li>
+<li>A identificação dos entrevistados incluirá alguns <em>stakeholders</em>;</li>
+<li>No mínimo, devem ser entrevistados o cliente e alguns utilizadores do sistema;</li>
+<li>Visto que não se poderá entrevistar todos os utilizadores de um produto, deve ser escolhida uma amostra representativa da comunidade de utilizadores para ser entrevistada;</li>
+<li>A identifcação dos entrevistados não precisa de ser finalizada antes do início da entrevista;</li>
+<li>É aceitável pedir opiniões acerca de outros indíviduos que deverão ser entrevistados.</li>
+<li>O entrevistador deverá explicar o contexto, os objetivos, a duração, os problemas a ser endereçados e a maneira como a informação da entrevista será tratada;</li>
+<li>Quando possível, modelos ou figuras podem ser utilizados de forma a encorajar o entrevistado a propôr alterações;</li>
+<li>Deverá ser utilizada, sempre que possível, a terminologia do problema.</li>
+</ul>
+<h5 id="estudos"><a class="header" href="#estudos">Estudos</a></h5>
+<ul>
+<li>É uma técnica que utiliza um questionário para colecionar informação com as respostas de diversos indivíduos;</li>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Identificar a audiência e os objetivos;</li>
+<li>Conceber o questionário;</li>
+<li>Escolher a amostra;</li>
+<li>Recrutar participantes;</li>
+<li>Conduzir o estudo.</li>
+</ul>
+</li>
+<li>Quando o mesmo questionário é utilizado para todas as pessoas, torna-se possível o tratamento estatístico das respostas colecionadas;</li>
+<li>O sucesso é muito dependente da maneira como o questionário é concebido;</li>
+<li>Se as questões não estiverem bem focadas, forem mal formuladas ou aparecerem numa ordem errada, as respostas ao questionário poderão ser enganadoras;</li>
+<li>Deve evitar-se a utilização de questões negativas;</li>
+<li>Deve ser utilizada como uma técnica preliminar que irá ajudar na preparação das entrevistas.</li>
+</ul>
+<h5 id="introspeção"><a class="header" href="#introspeção">Introspeção</a></h5>
+<ul>
+<li>É a técnica mais básica, óbvia e rudimentar da elicitação de requisitos;</li>
+<li>O analista define os requisitos para um dado sistema baseado naquilo que pensa acerca das necessidades dos <em>stakeholders</em>;</li>
+<li>Muito utilizada, nomeadamente quando os engenheiros de requisitos têm um conhecimento vasto acerca do domínio do problema;</li>
+<li>Pode ser usada apenas como um ponto de partida para a adoção de outras técnicas de elicitação de requisitos.</li>
+</ul>
+<h4 id="grupos"><a class="header" href="#grupos">Grupos</a></h4>
+<h5 id="brainstorming"><a class="header" href="#brainstorming"><em>Brainstorming</em></a></h5>
+<ul>
+<li>Facilita a geração de ideias;</li>
+<li>Congrega um grupo de 5 a 12 pessoas;</li>
+<li>O grupo sugere e explora o máximo de ideia possível, sem julgar ou criticar essas ideias;</li>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Geração de ideias;</li>
+<li>Consolidação de ideias.</li>
+</ul>
+</li>
+</ul>
+<h4 id="artefactos"><a class="header" href="#artefactos">Artefactos</a></h4>
+<h5 id="análise-do-domínio"><a class="header" href="#análise-do-domínio">Análise do Domínio</a></h5>
+<ul>
+<li>Análise da documentação e o estudo dos sistemas existentes é uma fonte de requisitos;</li>
+<li>É importante para obter um maior conhecimento acerca do domínio do problema;</li>
+<li>O objetivo é examinar o domínio em que o sistema se encontra, de forma a identificar elementos comuns em todos os sistemas desse domínio;</li>
+<li>Os artefactos do projeto atual devem ser guardados, de forma a ser possível o uso desta técnica no futuro.</li>
+</ul>
+<h5 id="prototipagem"><a class="header" href="#prototipagem">Prototipagem</a></h5>
+<ul>
+<li>Serve como mecanismo para capturar os requisitos;</li>
+<li>É baseada no seguinte processo iterativo:
+<ul>
+<li>Elicitação de Requisitos;</li>
+<li>Construção de Protótipos;</li>
+<li>Teste dos Protótipos;</li>
+<li>Recomeça o processo.</li>
+</ul>
+</li>
+<li>Assim que é considerado que os requisitos do cliente estão corretamente compreendidos, o protótipo é abandonado.</li>
+</ul>
+<h5 id="personas"><a class="header" href="#personas"><em>Personas</em></a></h5>
+<ul>
+<li>Uma <em>persona</em> é uma pessoa fictícia que represente um tipo de utilizador importante no produto em desenvolvimento;</li>
+<li>É um arquétipo das pessoas que fazem parte da audiência alvo;</li>
+<li>É uma técnica de segmentação de mercado</li>
+</ul>
+<p><img src="images/example_persona.png" alt="image Exemplo" /></p>
+<ul>
+<li>O seu processo deve ser o seguinte:
+<ul>
+<li>Identificar o problema;</li>
+<li>Criar as personas;</li>
+<li>Introduzir as personas;</li>
+<li>Utilizar as personas;</li>
+<li>Avaliar as personas.</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-07"><a class="header" href="#teórica-07">Teórica 07</a></h1>
+<h2 id="introdução-à-arquitetura-de-software"><a class="header" href="#introdução-à-arquitetura-de-software">Introdução à Arquitetura de <em>Software</em></a></h2>
+<h3 id="conceitos"><a class="header" href="#conceitos">Conceitos</a></h3>
+<h4 id="princípios"><a class="header" href="#princípios">Princípios</a></h4>
+<ul>
+<li>É uma lei fundamental e compreensiva, doutrina ou assunção;</li>
+<li>Alguns princípios de <em>design</em> de <em>software</em> são noções chave que providenciam as bases para muitas abordagens ou conceitos:
+<ul>
+<li>Abstração;</li>
+<li>Coesão e acoplamento;</li>
+<li>Descomposição e modularização;</li>
+<li>Encapsulamento e ocultação de informação;</li>
+<li>Separação da interface e da implementação;</li>
+<li>Suficiência, completude e primitivas;</li>
+<li>Separação de preocupações.</li>
+</ul>
+</li>
+</ul>
+<h4 id="design-1"><a class="header" href="#design-1"><em>Design</em></a></h4>
+<ul>
+<li><em>Software design</em> é um conceito ou invenção de um esquema para tornar uma especificação em <em>software</em> operacional;</li>
+<li><em>Design</em> é a atividade que liga os requisitos à implementação em código e testes;</li>
+<li>Um bom <em>design top-level</em> providencia a estrutura que, de forma segura, contém múltiplos <em>designs</em> de <em>lower-level</em>;</li>
+<li>Um bom <em>design</em> é indispensável em grandes projetos.</li>
+</ul>
+<h4 id="níveis-de-design"><a class="header" href="#níveis-de-design">Níveis de <em>Design</em></a></h4>
+<p><img src="images/design_levels.png" alt="image Níveis de Design" /></p>
+<h4 id="arquiteturas-de-software"><a class="header" href="#arquiteturas-de-software">Arquiteturas de <em>Software</em></a></h4>
+<ul>
+<li>As estruturas estáticas de um sistema define os seus elementos <em>design-time</em> internos e a sua disposição;</li>
+<li>As estruturas dinâmicas de um sistema define os seus elementos <em>run-time</em> e as suas interações;</li>
+<li>As propriedades fundamentais de um manifesto de sistema pode ser definido de duas formas:
+<ul>
+<li>Pelo seu comportamento visível externamente que define as suas interações funcionais entre o sistema e o seu ambiente;</li>
+<li>A propriedade de qualidade que é uma propriedade não funcional.</li>
+</ul>
+</li>
+</ul>
+<h5 id="requisitos-funcionais-e-arquitetura-de-software"><a class="header" href="#requisitos-funcionais-e-arquitetura-de-software">Requisitos Funcionais e Arquitetura de <em>Software</em></a></h5>
+<ul>
+<li>A arquitetura tem emergido como uma parte crucial do processo de desenvolvimento;</li>
+<li>Uma arquitetura de <em>software</em> é o resultado de decisões de <em>design</em> tomadas cedo para decompor o sistema em partes;</li>
+<li>Requisitos funcionais não determinam arquiteturas.</li>
+</ul>
+<h5 id="o-que-é-que-afeta-a-arquitetura"><a class="header" href="#o-que-é-que-afeta-a-arquitetura">O que é que afeta a arquitetura?</a></h5>
+<ul>
+<li>As arquiteturas são influencidas por:
+<ul>
+<li><em>Stakeholders</em>;</li>
+<li>Organização do desenvolvimento;</li>
+<li>O <em>background</em> e a experiência dos arquitetos;</li>
+<li>O ambiente técnico.</li>
+</ul>
+</li>
+<li>Uma arquitetura afeta os fatores que a influenciam;</li>
+<li>É o resultado de influências técnicas, de negócio e sociais;</li>
+<li>É acerca do <em>design</em> do sistema e o impacto nas suas qualidades;</li>
+<li>A arquitetura atua como o esqueleto do sistema, limita-o e afeta os seus atributos qualitativos.</li>
+</ul>
+<h4 id="riscos"><a class="header" href="#riscos">Riscos</a></h4>
+<ul>
+<li>Cada projeto irá enfrentar riscos, pelo que não há uma forma correta de fazer a arquitetura de <em>software</em>;</li>
+<li>Devem avaliar-se os riscos de cada projeto;</li>
+<li>Por vezes, é independente da arquitetura, visto que uma arquitetura que seja reutilizada já foi testada previamente;</li>
+<li>As escolhas a nível de arquitetura são mais importantes quando:
+<ul>
+<li>O espaço de soluções é pequeno;</li>
+<li>O risco de falha é grande;</li>
+<li>Há requisitos de atributos de qualidade difíceis de alcançar;</li>
+<li>Está a ser considerado um novo domínio.</li>
+</ul>
+</li>
+</ul>
+<h4 id="design-da-arquitetura-e-design-detalhado"><a class="header" href="#design-da-arquitetura-e-design-detalhado"><em>Design</em> da arquitetura e <em>design</em> detalhado</a></h4>
+<ul>
+<li>A fase de <em>design</em> pode ser particionada em duas fases:
+<ul>
+<li><strong><em>Design</em> arquitetural</strong>: partes macroscópicas do <em>design</em>, como os módulos e a forma como estes se conectam;</li>
+<li><strong><em>Design</em> detalhado</strong>: tudo o resto.</li>
+</ul>
+</li>
+<li>O <em>output</em> do <em>design</em> é:
+<ul>
+<li>um conjunto de artefactos que registam as decisões que foram tomadas;</li>
+<li>o <em>rationale</em> para cada decisão não trivial é explicado.</li>
+</ul>
+</li>
+<li>Cada sistema contém elementos e relações entre eles.</li>
+</ul>
+<h4 id="dependências"><a class="header" href="#dependências">Dependências</a></h4>
+<ul>
+<li>Cada componente tem uma função específica num sistema, sendo que irão colaborar entre si de forma a providenciar uma funcionalidade requerida;</li>
+<li>É importante minimizar as dependências entre componentes de forma a criar uma arquitetura pouco acoplada;</li>
+<li>Ao eliminar dependências desnecessárias, as mudanças são localizadas e não se propagam através do sistema;</li>
+<li>É necessário decidir como é que os componentes irão comunicar entre si e controlar a informação.</li>
+</ul>
+<h4 id="acoplamento"><a class="header" href="#acoplamento">Acoplamento</a></h4>
+<p><img src="images/coupling.png" alt="image Acoplamento" /></p>
+<h3 id="boas-arquiteturas"><a class="header" href="#boas-arquiteturas">Boas Arquiteturas</a></h3>
+<h4 id="esqueletos"><a class="header" href="#esqueletos">Esqueletos</a></h4>
+<ul>
+<li>Uma arquitetura de <em>software</em> com 3 patamares permite que os sistemas IT sejam capazes de localizar mudanças e gerir cargas transacionais;</li>
+<li>Uma arquitetura caracterizada por processos cooperativos é indicada para o desenvolvimento de sistemas operativos, uma vez que isola as falhas;</li>
+<li>É provável que uma rede distribuída VOIP (p.e. <em>Skype</em>) utilize uma arquitetura <em>peer-to-peer</em>.</li>
+</ul>
+<p><img src="images/skeletons.png" alt="image Esqueletos" /></p>
+<h4 id="atributos-de-qualidade"><a class="header" href="#atributos-de-qualidade">Atributos de Qualidade</a></h4>
+<ul>
+<li>Uma arquitetura de sistema tem o poder de providenciar ou retirar diversas qualidades, como segurança ou desempenho;</li>
+<li>Mudanças de requisitos funcionais são um desafio, no entanto, a evolução de atributos de qualidade pode forçar mudanças drásticas;</li>
+<li>Geralmente, a arquitetura requerá mais atenção em sistemas de larga escala ou elevada complexidade;</li>
+<li>As arquiteturas só podem ser avaliadas no contexto de objetivos estabelecidos;</li>
+<li>Existem, no entanto, certas <em>rules of thumb</em>.</li>
+</ul>
+<h4 id="a-arquitetura-é-ortogonal-à-funcionalidade"><a class="header" href="#a-arquitetura-é-ortogonal-à-funcionalidade">A Arquitetura é Ortogonal à Funcionalidade</a></h4>
+<ul>
+<li>Ambas podem ser balanceadas;</li>
+<li>Não há uma única arquitetura que seja melhor que as outras, mas algumas são mais indicadas para umas tarefas que outras;</li>
+<li>Um sistema pode ver a sua arquitetura a mudar, no entanto, deverá manter a sua funcionalidade;</li>
+<li>A mesma arquitetura pode ser utilizada num sistema com funcionalidades totalmente diferentes;</li>
+<li>Uma má escolha de arquitetura poderá tornar difícil alcançar os atributos de qualidade e as funcionalidades pretendidas.</li>
+</ul>
+<h4 id="o-que-torna-uma-arquitetura-boa"><a class="header" href="#o-que-torna-uma-arquitetura-boa">O que torna uma arquitetura boa?</a></h4>
+<ul>
+<li>Deve ser baseada numa lista de prioridade de atributos de qualidade;</li>
+<li>Deve ser documentada utilizando <em>views</em>;</li>
+<li>As <em>views</em> devem indicar os problemas dos <em>stakeholders</em> mais importantes;</li>
+<li>Deve ser avaliada pela sua habilidade de fornecer as qualidades mais importantes do sistema;</li>
+<li>Deve ser capaz de suportar uma implementação incremental</li>
+</ul>
+<h4 id="arquiteturas-presumptive"><a class="header" href="#arquiteturas-presumptive">Arquiteturas <em>Presumptive</em></a></h4>
+<ul>
+<li>Família de arquiteturas que dominam um particular domínio;</li>
+<li>Desenvolvedores que nestes domínios optem por outras arquiteturas podem ter de justificar a sua escolha;</li>
+<li>Semelhantes a arquiteturas referenciais;
+<ul>
+<li>Uma arquitetura referencial é a família de arquiteturas que descreve a solução arquitetural para um dado problema.</li>
+</ul>
+</li>
+<li>Têm sucesso porque são um bom <em>match</em> para os riscos comuns num domínio.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-08"><a class="header" href="#teórica-08">Teórica 08</a></h1>
+<h2 id="riscos-arquiteturais"><a class="header" href="#riscos-arquiteturais">Riscos Arquiteturais</a></h2>
+<h3 id="abordagem-orientada-aos-riscos"><a class="header" href="#abordagem-orientada-aos-riscos">Abordagem Orientada aos Riscos</a></h3>
+<ul>
+<li>Ajuda a desenvolver <em>software</em> de qualidade de forma rápida e barata;</li>
+<li>Permite que os arquitetos de <em>software</em> experimentem múltiplas arquiteturas;</li>
+<li>Ajuda a responder a 2 questões:
+<ul>
+<li>Quanto trabalho de arquitetura de <em>software</em> é preciso fazer?</li>
+<li>Que técnicas é que devem ser utilizadas?</li>
+</ul>
+</li>
+<li>Guia à aplicação de um conjunto mínimo de técnicas de arquitetura de forma a diminuir os riscos ligados à pressão nos arquitetos de <em>software</em>;</li>
+<li>Segue 3 passos:
+<ul>
+<li>Identifica e prioritiza riscos;</li>
+<li>Seleciona e aplica um conjunto de técnicas;</li>
+<li>Avalia a redução do risco.</li>
+</ul>
+</li>
+</ul>
+<h3 id="riscos-1"><a class="header" href="#riscos-1">Riscos</a></h3>
+<ul>
+<li>Em engenharia, riscos são conhecidos como a probabilidade de existir uma falha multiplicado pelo impacto;
+\[  risk\ =\ probabilidade\ de\ falha \times impacto \]</li>
+<li>A probabilidade de falha e o impacto não são certos, visto que é muito difícil medi-los de forma precisa;</li>
+<li>Um risco pode existir (alguém o vê) mesmo que este não exista;</li>
+<li>Pode ser qualificado categoricamente, por vezes como uma falha de um atributo de qualidade necessário;</li>
+<li>Devem ser bem descritos, para que, posteriormente, possa ser testada a sua mitigação;</li>
+</ul>
+<h4 id="protótipos-de-riscos-comuns"><a class="header" href="#protótipos-de-riscos-comuns">Protótipos de Riscos Comuns</a></h4>
+<p><img src="images/prot_risks.png" alt="image Protótipos de Riscos" /></p>
+<h4 id="prioritização-de-riscos"><a class="header" href="#prioritização-de-riscos">Prioritização de Riscos</a></h4>
+<ul>
+<li>Os riscos não são todos iguais, pelo que devem ser prioritizados. Muitas vezes, esta prioritização é feita com base numa discussão das prioridades entre os elementos das equipas;</li>
+<li>Os riscos podem ser caraterizados em duas grandes dimensões:
+<ul>
+<li>Com prioridade para os <em>stakholders</em> (<strong>de negócio</strong>);</li>
+<li>Os desenvolvedores perceberam dificuldades (<strong>de engenharia</strong>);</li>
+</ul>
+</li>
+</ul>
+<h4 id="mitigação-de-riscos"><a class="header" href="#mitigação-de-riscos">Mitigação de Riscos</a></h4>
+<ul>
+<li>As técnicas de mitigação de riscos são muito vastas, desde pura análise até puras soluções.</li>
+<li>Vejam-se algumas técnicas:</li>
+</ul>
+<p><img src="images/risk_techniques.png" alt="image Técnicas de Mitigação de Riscos" /></p>
+<ul>
+<li>É essencial que se seja capaz de explicitar como escolher as técnicas de forma a responder aos riscos;</li>
+<li>Para isso, pode criar-se uma espécie de manual com entradas no seguinte formato:
+<ul>
+<li>Se tivermos <code>nome do risco</code>, devemos considerar utilizar <code>nome da técnica</code> para o reduzir.</li>
+</ul>
+</li>
+<li>De notar, que uma técnica poderá ser boa a reduzir alguns riscos, mas não outros, sendo que, idealmente, uma técnica singular deveria ser endereçada para resolver todos os riscos conhecidos;</li>
+<li>Alguns riscos podem ser mitigados utilizando algumas técnicas préviamente conhecidas, enquanto que, para outros, é necessário descobrir essas técnicas no momento.</li>
+</ul>
+<h4 id="esforço-proporcional-aos-riscos"><a class="header" href="#esforço-proporcional-aos-riscos">Esforço proporcional aos riscos</a></h4>
+<ul>
+<li>A abordagem orientada aos riscos utiliza o seguinte princípio:
+<ul>
+<li>Os esforços colocados na arquitetura devem ser proporcionais ao risco de falha.</li>
+</ul>
+</li>
+<li>Assim, utilizando esta abordagem, a preocupação surgirá nas áreas em que riscos de falha são percetíveis.</li>
+</ul>
+<h3 id="estilos-de-design"><a class="header" href="#estilos-de-design">Estilos de <em>Design</em></a></h3>
+<ul>
+<li><em>Evolutionary Design</em> (NDUF);</li>
+<li><em>Planned Design</em> (BDUF);</li>
+<li><em>Minimal Planned Design</em> (EDUF/LDUF).</li>
+</ul>
+<h4 id="evolutionary-design"><a class="header" href="#evolutionary-design"><em>Evolutionary Design</em></a></h4>
+<ul>
+<li>O <em>design</em> do sistema cresce conforme o sistema é implementado;</li>
+<li>Práticas <em>agile</em> utilizadas para combater o &quot;caos&quot;:
+<ul>
+<li><em>Refactoring</em> ajuda a &quot;limpar&quot; locais de <em>design</em> não coordenados;</li>
+<li><em>Design</em> orietnado aos testes garante que as mudanças no sistema não provocam a perda ou a falha de funcionalidades já existentes;</li>
+<li>Tem uma integração contínua e providencia a mesma <em>codebase</em> a toda a equipa.</li>
+</ul>
+</li>
+</ul>
+<h4 id="planned-design"><a class="header" href="#planned-design"><em>Planned Design</em></a></h4>
+<ul>
+<li>A arquitetura é detalhada antes da sua construção;</li>
+<li>Poucas pessoas defendem que se faça isto para todo um sistema;</li>
+<li>É útil para quando diversas equipas se encontram a trabalhar em simultâneo numa mesma arquitetura partilhada;</li>
+<li>Mesmo nesta abordagem, raramente se tem uma arquitetura a 100% antes de se iniciar a prototipagem ou o código;</li>
+<li>O <em>design</em> pode ser aperfeiçoado com o <em>feedback</em> do código.</li>
+</ul>
+<h4 id="minimal-planned-design"><a class="header" href="#minimal-planned-design"><em>Minimal Planned Design</em></a></h4>
+<ul>
+<li>Estilo híbrido das abordagens anteriores que permite o seu balanceamento;</li>
+<li>Uma forma de o fazer é, inicialmente, efetuar-se o <em>planned design</em> para garantir que a arquitetura é capaz de lidar com os grandes riscos do sistema e as alterações futuras aos requisitos podem ser tratadas através de um <em>design</em> local ou do <em>evolutionary design</em>;</li>
+</ul>
+<h4 id="sumário-dos-estilos-de-design"><a class="header" href="#sumário-dos-estilos-de-design">Sumário dos Estilos de <em>Design</em></a></h4>
+<ul>
+<li>A abordagem <em>risk-driven</em> é compatível com os 3 estilos;</li>
+<li>Todos os estilos concordam que o <em>design</em> terá, obrigatoriamente, de acontecer em algum ponto;
+<ul>
+<li>No NDUF quando um risco é considerado suficientemente grande;</li>
+<li>No BDUF numa fase inicial;</li>
+<li>No LDUF é uma mistura dos dois anteriores.</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-09"><a class="header" href="#teórica-09">Teórica 09</a></h1>
+<h2 id="táticas-de-design"><a class="header" href="#táticas-de-design">Táticas de <em>Design</em></a></h2>
+<ul>
+<li>São utilizadas pelo arquiteto de <em>software</em> para criar um <em>design</em>;</li>
+<li>Conectam os requisitos de atributos de qualidade com decisões arquiteturais;</li>
+<li>São uma decisão de <em>design</em> que irá ter impacto sob atributos de qualidade específicos;</li>
+</ul>
+<p><img src="images/tactics.png" alt="image Táticas" /></p>
+<h3 id="tipos-de-táticas"><a class="header" href="#tipos-de-táticas">Tipos de Táticas</a></h3>
+<ul>
+<li>Táticas de Disponibilidade;</li>
+<li>Táticas de Modificabilidade;</li>
+<li>Táticas de Desempenho;</li>
+<li>Táticas de Segurança;</li>
+<li>Táticas de Testabilidade;</li>
+<li>Táticas de Usabilidade.</li>
+</ul>
+<h3 id="táticas-de-disponibilidade"><a class="header" href="#táticas-de-disponibilidade">Táticas de Disponibilidade</a></h3>
+<ul>
+<li>Têm como alvo evitar que faltas se tornem falhas ou, pelo menos, reduzir os efeitos que uma falta poderá ter e repará-los o mais depressa possível;</li>
+<li>Muitas destas táticas estão disponíveis na execução <em>standard</em> dos sistemas;</li>
+<li>Todas as abordagem para endereçar disponibilidade involvem algum tipo de:
+<ul>
+<li>Redundância;</li>
+<li>Monitorização para detetar falhas;</li>
+<li>Recuperação quando uma falha é detetada.</li>
+</ul>
+</li>
+<li>A monitorização e a recuperação tanto podem ser processos automáticos, como processo manuais.</li>
+</ul>
+<h4 id="deteção-de-falhas"><a class="header" href="#deteção-de-falhas">Deteção de Falhas</a></h4>
+<ul>
+<li><em>Ping/echo</em>: um componente manda um <em>ping</em> e espera receber um <em>echo</em> como resposta do componente a analisar;</li>
+<li><em>Heartbeat</em>: um componente emite, de forma periódica, uma mensagem <em>heartbeat</em> e outro componente ouve-a;
+<ul>
+<li>No caso de o <em>heartbeat</em> falhar, assume-se que o componente de origem falhou e o componente responsável pela correção de falhas é notificado.</li>
+</ul>
+</li>
+<li><em>Exceptions</em>: quando uma classe de falha é reconhecida lança-se uma <em>Exception</em>.</li>
+</ul>
+<h4 id="recuperação-de-falhas"><a class="header" href="#recuperação-de-falhas">Recuperação de Falhas</a></h4>
+<ul>
+<li><em>Voting</em>: cada um dos processos a correr em processadores redundantes recebe o <em>input</em> e computaciona o <em>output</em> que envia a um <em>voter</em>;
+<ul>
+<li>Algoritmos populares são as regras de maioria e o componente favorito;</li>
+<li>É utilizado para corrigir erros de operações de um algoritmo ou falhas de um processador.</li>
+</ul>
+</li>
+<li><em>Active Redundancy</em>: todos os componentes redundantes respondem aos eventos em paralelo;
+<ul>
+<li>Apenas é considerada a resposta de 1 componente (geralmente, o primeiro a responder), sendo as restantes descartadas.</li>
+</ul>
+</li>
+<li><em>Passive Redundancy</em>: um componente (primário) responde ao eventos e informa os outros componentes (<em>the standbys</em>) do estado das atualizações que estes devem fazer.
+<ul>
+<li>Quando uma falha ocorra, o sistem deverá, primeiramente, garantir que o estado de <em>backup</em> é suficiente recente antes de continuar os serviços.</li>
+</ul>
+</li>
+</ul>
+<h4 id="prevenção-de-falhas"><a class="header" href="#prevenção-de-falhas">Prevenção de Falhas</a></h4>
+<ul>
+<li><em>Removal from Service</em>: Remove um componente de operar em atividades que já se encontram a decorrer;</li>
+<li><em>Transactions</em>: Agrupamento de múltiplos passos sequenciais que pode ser desfeito de uma vez;
+<ul>
+<li>Usados para evitar que dados sejam afetados se um passo do processo falhar;</li>
+<li>Também evitam colisões de acesso a dados de múltiplas <em>threads</em> em simultâneo.</li>
+</ul>
+</li>
+<li><em>Process Monitor</em>: Sempre que uma falha num processo é detetada, o processo de monitorização pode apagar esse processo;
+<ul>
+<li>Posteriormente, é necessário criar uma nova instância desse processo.</li>
+</ul>
+</li>
+</ul>
+<h3 id="táticas-de-desempenho"><a class="header" href="#táticas-de-desempenho">Táticas de Desempenho</a></h3>
+<h4 id="eventos"><a class="header" href="#eventos">Eventos</a></h4>
+<ul>
+<li>Táticas de desempenho geram respostas a eventos do sistema num intervalo de tempo;
+<ul>
+<li>O evento poderá ser singular ou uma <em>stream</em> e será o gatilho para um pedido de computação de desempenho,</li>
+<li>O sistema irá processar o evento e gerar uma resposta;</li>
+<li>As táticas de desempenho irão controlar o tempo em que a resposta é gerada;</li>
+</ul>
+</li>
+<li>A <strong>latência</strong> é o tempo entre o evento e a geração da resposta ao evento.</li>
+</ul>
+<p><img src="images/perfomance_tactics.png" alt="image Táticas de Desempenho" /></p>
+<h4 id="consumo-de-recursos-e-tempo-de-bloqueio"><a class="header" href="#consumo-de-recursos-e-tempo-de-bloqueio">Consumo de Recursos e Tempo de Bloqueio</a></h4>
+<ul>
+<li>Quando um evento acontece, o sistema deverá processá-lo ou estará bloqueado por algum motivo;
+<ul>
+<li>O consumo de recursos deve ser gerido;</li>
+<li>O acesso a secções críticas deve ser sequencial;</li>
+</ul>
+</li>
+<li>Existem três categorias de táticas relacionadas com o desempenho:
+<ul>
+<li>Demanda de recursos;</li>
+<li>Gestão de recursos;</li>
+<li>Recursos arbitrários. </li>
+</ul>
+</li>
+</ul>
+<h4 id="demanda-de-recursos"><a class="header" href="#demanda-de-recursos">Demanda de Recursos</a></h4>
+<ul>
+<li>As <em>streams</em> de eventos são a fonte das demandas de recursos;</li>
+<li>Tem 2 aspetos principais:
+<ul>
+<li>O tempo entre eventos numa <em>stream</em> de recursos;</li>
+<li>Quantos recursos é que são consumidos por cada pedido.</li>
+</ul>
+</li>
+<li>Uma tática que permite diminuir a latência é a redução dos recursos necessários para processar uma <em>stream</em>;</li>
+<li>Deve ainda aumentar-se a eficiência computacional utilizando os algoritmos adequados, sendo que uma melhoria no algoritmo deverá diminuir a latência;</li>
+<li>Por vezes, um recursos pode ser trocado por outro;</li>
+<li>Deve reduzir o <em>overhead</em> computacional, uma vez que se não existir pedidos para um dado recurso, o processamento será também menor;</li>
+<li>A utilização de nós intermediários irá aumentar o número de recursos consumidos, pelo que a sua remoção diminuirá a latência;</li>
+<li>Por fim, outra táticas para reduzir a latência passa por reduzir o número de eventos a serem processados.</li>
+</ul>
+<h4 id="gestão-de-recursos"><a class="header" href="#gestão-de-recursos">Gestão de Recursos</a></h4>
+<ul>
+<li>Introdução de concorrência: se os processos puderem ser tratados de forma paralela, então o <em>blocked time</em> será reduzido;</li>
+<li>Devem manter-se múltiplas cópias, tanto dos dados, como das computações. Clientes num padrão cliente-servidor são réplicas da computação.
+<ul>
+<li>Isto irá reduzir o nível de contenção, comparativamente ao caso em que todas as computações são executadas num servidor central;</li>
+<li>Para diminuir a contenção, poderá ainda utilizar-se <em>caching</em>, mas as cópias dos dados devem ser consistentes e estar sincronizadas.</li>
+</ul>
+</li>
+<li>O aumento dos recursos disponíveis (introdução de novos processadores, de mais memória, de processadores mais rápidos, etc...) irá, muito provavelmente, reduzir a latência.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-10"><a class="header" href="#teórica-10">Teórica 10</a></h1>
+<h2 id="design-patterns"><a class="header" href="#design-patterns"><em>Design Patterns</em></a></h2>
+<h3 id="patterns"><a class="header" href="#patterns"><em>Patterns</em></a></h3>
+<ul>
+<li>Baseia-se na ideia que alguém já terá resolvido os nossos problemas;</li>
+<li>São soluções comprovadas para problemas comuns e conhecidos;</li>
+<li>Emergem da experiência de outros <em>devs</em> para resolver problemas de <em>design</em>;</li>
+<li>A melhor maneira de usar padrões é encher o cérebro com eles para, em seguida, reconhecer o local nos nossos <em>designs</em> em que podemos aplicá-los;</li>
+<li>Ao invés de reutilização de código, os padrões permitem a <strong>reutilização de experiência</strong>;</li>
+<li>São:
+<ul>
+<li>Uma descrição textual de uma solução genérica para um problema recorrente num dado contexto;</li>
+<li>Um <em>chunk</em> pré-definido e construído para servir uma dada situação;</li>
+<li>Um pacote de decisões de <em>design</em> que podem ser reutilizadas como um conjunto.</li>
+</ul>
+</li>
+<li>Existem em níveis diferentes:
+<ul>
+<li>Padrões de Sistema (estilo arquiteturais);</li>
+<li>Padrões de <em>Design</em>;</li>
+<li>Padrões de Código.</li>
+</ul>
+</li>
+<li>Não são perfeitos para todos os problemas;</li>
+<li>A sua habilidade de efetuar uma separação entre as coisas que alteram e as que não alteram, revela-se muito útil para a implementação de sistemas;</li>
+<li><strong>3 tipos</strong>:
+<ul>
+<li>Criacionais;</li>
+<li>Estruturais;</li>
+<li>Comportamentais.</li>
+</ul>
+</li>
+<li>Vamos descrever dois padrões:
+<ul>
+<li><em>Strategy</em> (estrutural);</li>
+<li><em>Observer</em> (comportamental);</li>
+<li><em>Decorator</em> (estrutural).</li>
+</ul>
+</li>
+</ul>
+<h3 id="strategy-pattern"><a class="header" href="#strategy-pattern"><em>Strategy Pattern</em></a></h3>
+<ul>
+<li>Veja-se o exemplo da implementação de patos.
+<ul>
+<li>Todos os patos são capazes de <em>quack</em> e de <em>swim</em>, assim, a superclasse <strong>Pato</strong> deve tratar do código de implementação;</li>
+<li>O método <code>display()</code> é abstrato, visto que todos os patos têm aparências diferentes;</li>
+<li>Cada subtipo de pato é responśavel por implementar o seu próprio comportamento de <code>display()</code>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/ducks_example_one.png" alt="image Exemplo Patos 1" /></p>
+<ul>
+<li>Se quisermos adicionar um novo atributo, por exemplo, o método <code>fly()</code>, este será adicionado à classe do topo, visto que todos os patos devem ser capazes de ter esse método.
+<ul>
+<li>Todas as subclasses vão herdar o método <code>fly()</code> por <strong>herança</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/ducks_example_two.png" alt="image Exemplo Patos 2" /></p>
+<ul>
+<li>
+<p>No entanto, se considerarmos patos de borracha, estes não devem ser capazes de voar. </p>
+<ul>
+<li>Assim, temos de dar <em>override</em> ao método <code>fly()</code>;</li>
+</ul>
+</li>
+<li>
+<p>O mesmo acontece com o método <code>quack()</code>;</p>
+</li>
+<li>
+<p>Assim, devemos escrever esses métodos diretamente dentro da subclasse <em>RubberDuck</em>;</p>
+</li>
+<li>
+<p>O uso da herança para reutilização, neste caso, não foi bom para a manutenção da aplicação;</p>
+</li>
+<li>
+<p><strong>A herança não é bom mecanismo quando são necessárias atualizações</strong>;</p>
+<ul>
+<li>Pode gerar duplicação de código entre subclasses;</li>
+<li>Alterações no código podem fazer alterações entre subclasses não previstas.</li>
+</ul>
+</li>
+<li>
+<p>Uma possível estratégia, é separar os métodos <code>fly()</code> e <code>quack()</code>, visto que estes podem variar entre patos;</p>
+<ul>
+<li>O uso de interfaces é mau para a reutilização de código.</li>
+</ul>
+</li>
+<li>
+<p>Quando um método precisa de ser modificado, é preciso verificar todas as subclasses.</p>
+</li>
+</ul>
+<p><img src="images/ducks_example_three.png" alt="image Exemplo Patos 3" /></p>
+<p><strong>Princípio de <em>design</em> 1</strong>: Devemos identificar os aspetos da aplicação que variam e separá-los dos restantes.</p>
+<p><strong>Princípio de <em>design</em> 2</strong>: Devemos programar para uma interface, não para a implementação.</p>
+<p><strong>Princípio de <em>design</em> 3</strong>: Devemos favorecer a composição ao invés da herança.</p>
+<ul>
+<li>Este padrão define uma família de algoritmos, encapsula cada um deles e permite a troca entre eles;</li>
+<li>Deixa que que o algoritmo varie independentemente da utilização que o cliente lhe pretende dar.</li>
+</ul>
+<h3 id="observer-pattern"><a class="header" href="#observer-pattern"><em>Observer Pattern</em></a></h3>
+<ul>
+<li>Veja-se o exemplo de uma aplicação de monitorização de meteorologia:
+<ul>
+<li><strong>Problema</strong>: se novos <em>Displays</em> são adicionados, então precisamos de atualizar os dados da meteorologia;</li>
+<li><strong>Oportunidade</strong>: a informação/interface necessária entre <em>displays</em> é semelhante.</li>
+</ul>
+</li>
+<li>Este padrão define uma dependência de um para muitos entre objetos;</li>
+<li>Quando o estado de um objeto altera, todos os seus dependentes são notificados e atualizados de forma automática.</li>
+</ul>
+<h3 id="decorator-pattern"><a class="header" href="#decorator-pattern"><em>Decorator Pattern</em></a></h3>
+<p><strong>Princípio <em>open-closed</em></strong>: Um módulo ou classe deve ser aberto à sua extensão, mas fechado à modificação.</p>
+<ul>
+<li>Este é o princípio mais importante do <em>design</em> Orientado a Objetos;</li>
+<li>Os módulos devem ser escritos de forma a poderem ser extendidos, sem serem modificados;</li>
+<li>Devemos querer alterar o que os módulos fazem sem ser necessário alterar o seu código;</li>
+<li>o <em>decorator pattern</em> coloca responsabilidades adicionais a um objeto de forma dinâmica;</li>
+<li>Providencia uma alternativa flexível para <em>subclassing</em> de forma a extender as funcionalidades.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-11"><a class="header" href="#teórica-11">Teórica 11</a></h1>
+<h2 id="estilos-de-arquitetura"><a class="header" href="#estilos-de-arquitetura">Estilos de Arquitetura</a></h2>
+<p>Consiste em:</p>
+<ul>
+<li>Conjunto de tipos de componentes (p.e. processos, procedimentos, etc...) que executam alguma função em <em>runtime</em>;</li>
+<li>Um <em>layout</em> topológico de componentes que demonstram as suas relação em <em>runtime</em>;</li>
+<li>Um conjunto de restrições semânticas;</li>
+<li>Um conjunto de conetores (p.e. <em>data streams</em>, <em>sockets</em>, etc...) que mediam a comunicação entre componentes.</li>
+</ul>
+<p>Um sistema que se conforme a um dado estilo, então deve usar esses tipos, o que irá restringir o <em>design space</em>.</p>
+<h3 id="restrições"><a class="header" href="#restrições">Restrições</a></h3>
+<ul>
+<li>Podem atuar como guias que apontam para onde queremos levar o sistema;</li>
+<li>Podemos pensar num estilo como um conjunto pré-fabricado de restrições a serem reutilizadas;</li>
+<li>A consistência trazida acerca das restrições de estilo podem encorajar a evolução clara do sistema, o que poderá tornar a manutenção mais fácil;</li>
+<li>A comunicação entre <em>devs</em> é melhorada.</li>
+</ul>
+<h3 id="platonic-vs-embodied"><a class="header" href="#platonic-vs-embodied"><em>Platonic vs Embodied</em></a></h3>
+<ul>
+<li>Um estilo arquitetónico <em>platonic</em> é uma idealização;
+<ul>
+<li>Geralmente, só se encontra em livros e muito raramente em <em>source code</em>.</li>
+</ul>
+</li>
+<li>Um estilo arquitetónico <em>embodied</em> existe em sistemas reais;
+<ul>
+<li>Por vezes viola as restrições estritas encontradas em estilos platónicos.</li>
+</ul>
+</li>
+<li>Por vezes, podemos encontrar versões <em>embodied</em> do estilo em que servidores, de forma ocasional, enviam dados para os clientes;</li>
+<li>Dependendo da forma de implementação, poderá resultar num servidor que depende dos clientes.</li>
+</ul>
+<h3 id="patterns-vs-styles"><a class="header" href="#patterns-vs-styles"><em>Patterns vs Styles</em></a></h3>
+<ul>
+<li><em>Design patterns</em> são em menor escala que os estilos arquitetónicos;</li>
+<li>Os <em>patterns</em> podem aparecer em qualquer local no <em>design</em> e podem aparecer múltiplos <em>patterns</em> no mesmo <em>design</em>;</li>
+<li>Um sistema, usalmente, tem um único estilo arquitetónico dominante;</li>
+<li>Se um sistema tiver um estilo arquitetónico cliente-servidor, devemos esperar ver um componentes de cliente e servidor nas vistas de <em>design top-level</em>;</li>
+<li>O sistema também pode empregar <em>patterns</em> arquitetónicos, tal como um <em>REST pattern</em>.</li>
+</ul>
+<h3 id="catálogo-de-estilos"><a class="header" href="#catálogo-de-estilos">Catálogo de Estilos</a></h3>
+<p><img src="images/catalog_of_styles.png" alt="image Catálogos de Estilos" /></p>
+<h3 id="estilo-de-camadas"><a class="header" href="#estilo-de-camadas">Estilo de Camadas</a></h3>
+<ul>
+<li>O elemento essencial é a camada;</li>
+<li>A relação baseia-se num <em>uses</em>, ou seja, uma especialização da relação de dependência;</li>
+<li>Consiste numa <em>stack</em> de camadas;</li>
+<li>Cada camada atua como um máquina virtual para as camadas superiores de forma a ordenar as formas em DAG;</li>
+<li>Num estilo de camadas simples, cada camada apenas pode usar a camada diretamente abaixo;</li>
+<li>Atributos de qualidade promovidos: modificabilidade, portabilidade e reutilização;</li>
+<li>Pode variar muito entre a sua forma <em>platonic</em> e a sua forma <em>embodied</em>;</li>
+<li>Na prática, este estilo podem violar as suas restrições;
+<ul>
+<li>Podemos ver camadas a saltar outras ou camadas inferiores a utilizar camadas superiores;</li>
+<li>As camadas inferiores podem comunicar de forma segura com camadas superiores se usarem um mecanismo de <em>callback</em>.</li>
+</ul>
+</li>
+<li>&quot;<em>Lasagna Code</em>&quot; refere-se a um programa estruturado que utilize este estilo.</li>
+</ul>
+<h3 id="big-ball-of-mud-style"><a class="header" href="#big-ball-of-mud-style"><em>Big ball of mud style</em></a></h3>
+<ul>
+<li>Não tem um estrutura evidente;</li>
+<li>É típica a partilha de informação de forma pormíscua, para permitir que a extensão de estruturas de dados se tornem efetivamente globais;</li>
+<li>Reparações e manutenção são convenientes e assemelham-se a remendos grosseiros, ao invés de refatorações elegantes;</li>
+<li>Não é feito qualquer esforço para forçar qualquer tipo de integridade conceptual ou consistência (<em>spaghetti code</em>);</li>
+<li>Estes sistemas têm má manutenção e extensabilidade;</li>
+<li>Este estilo é um estratégia de engenharia suficientemente boa.</li>
+</ul>
+<h3 id="pipe--filter-style"><a class="header" href="#pipe--filter-style"><em>Pipe &amp; Filter Style</em></a></h3>
+<ul>
+<li><em>Flow</em> de dados através de <em>pipes</em> para filtrar o trabalho nos dados;</li>
+<li>A rede <em>pipe-and-filter</em> está a processar dados de forma contínua e incremental;</li>
+<li>Consiste em 4 elementos:
+<ul>
+<li><em>Pipes</em>;</li>
+<li>Filtros;</li>
+<li>Portas de leitura;</li>
+<li>Portas de escrita.</li>
+</ul>
+</li>
+<li>Um filtro lê um <em>input</em> das portas de <em>input</em>, efetua algum processamento e escreve o <em>output</em> nas portas de <em>output</em>;</li>
+<li>Repete o processo até chegar à altura de parar;</li>
+<li>Os filtros podem enriquecer, refinar e transformar os dados;</li>
+<li>Cada filtro aplica uma função ao seu <em>input</em>;</li>
+<li>Os <em>pipes</em> apenas devem transportar dados num direção, sem trocar e ordenados;</li>
+<li>Os ciclos na rede são raros e por vezes proíbidos;</li>
+<li>Os filtros não devem interagir uns com os outros, até mesmo indiretamente, exceto através de <em>pipes</em>;</li>
+<li>Um filtro lê o <em>input</em> de forma incremental e, enquanto processa esse <em>input</em>, incrementalmente escreve o seu <em>output</em>.</li>
+</ul>
+<p><img src="images/pipe_and_filter.png" alt="image Pipe &amp; Filter" /></p>
+<h3 id="batch-sequential-style"><a class="header" href="#batch-sequential-style"><em>Batch-Sequential Style</em></a></h3>
+<ul>
+<li>Dados andam de <em>stage</em> em <em>stage</em>;</li>
+<li>Cada <em>stage</em> completa todo o seu processamento antes de escrever o seu <em>output</em>;</li>
+<li>Os dados podem andar entre <em>stages</em> numa <em>stream</em>, mas é mais vezes escrito num ficheiro em disco;</li>
+<li>Tem restrições semelhantes ao estilo <em>pipe-and-filter</em>;</li>
+<li>Cada <em>stage</em> é similarmente independente;</li>
+<li>Um <em>stage</em> depende dos dados que recebe;</li>
+<li>Os <em>stage</em> não interagem entre eles, exceto através das <em>streams</em> ou ficheiros de <em>input</em> e <em>output</em>. </li>
+</ul>
+<p><img src="images/batch_sequential.png" alt="image Batch-Sequential" /></p>
+<h3 id="batch-sequential-vs-pipe--filter"><a class="header" href="#batch-sequential-vs-pipe--filter"><em>Batch-Sequential vs Pipe &amp; Filter</em></a></h3>
+<ul>
+<li>Ambas decompõem a tarefa numa sequência fixa de computações, interagindo apenas através dos dados.</li>
+<li><em><strong>Batch-Sequential</strong></em>:
+<ul>
+<li>Grão grosso;</li>
+<li>Grande latência;</li>
+<li>Acesso externo ao <em>input</em>;</li>
+<li>Não tem concorrência;</li>
+<li>Não tem interação.</li>
+</ul>
+</li>
+<li><em><strong>Pipe &amp; Filter</strong></em>:
+<ul>
+<li>Grão fino;</li>
+<li>Resultados começam o processamento;</li>
+<li><em>Input</em> localizado;</li>
+<li>Possível concorrência;</li>
+<li>Possível interação.</li>
+</ul>
+</li>
+</ul>
+<h3 id="model-centered-style"><a class="header" href="#model-centered-style"><em>Model-Centered Style</em></a></h3>
+<ul>
+<li>Componentes independentes interagem com um modelo central (<em>data store</em>), ao invés de interagirem uns com os outros;</li>
+<li>Todos os sistemas <em>model-centered</em> têm um componente <em>model</em> e múltiplos componentes <em>views</em>, <em>controller</em> ou <em>view-controller</em>;</li>
+<li>O estilo é relacionado a múltiplos <em>design patters</em>, incluindo o <em>document-view</em>, o MVC e o <em>observer</em>.</li>
+</ul>
+<p><img src="images/model_centered.png" alt="image Model-Centered" /></p>
+<ul>
+<li>As <em>views</em> e os <em>controllers</em> dependem apenas do <em>model</em> e não umas das outras;</li>
+<li>A modificabilidade é melhorada porque o produtor e o consumidor de informação estão separados;</li>
+<li>O sistema é extensível, uma vez que <em>views</em> e <em>controllers</em> inesperados são facilmente adicionados;</li>
+<li>Pode ser fácil de gerir e persistir o estado, visto que é centralizado no componente <em>model</em>;</li>
+<li>A concorrência pode ser promovida visto que as <em>views</em> e os <em>controllers</em> podem correr nas suas próprias <em>threads</em> ou processos;</li>
+<li>Este estilo é útil quando não sabemos a configuração futura do sistema.</li>
+</ul>
+<h3 id="publish-subscribe-style"><a class="header" href="#publish-subscribe-style"><em>Publish-Subscribe style</em></a></h3>
+<ul>
+<li>Componentes independentes publicam eventos e subscrevem-se a eles;</li>
+<li>A componente de publicação é ignorante da razão principal quando um evento é publicado;</li>
+<li>Uma componente de subscrição não sabe o porquê ou quem publicou o evento.</li>
+</ul>
+<p><img src="images/publish_subscribe.png" alt="image Publish-Subscribe" /></p>
+<ul>
+<li>Este estilo define as portas de publicação e de subscrição e um conetor (um <em>event bus connector</em>);</li>
+<li>Qualquer tipo de componente pode publicar/subscrever eventos desde que utilize uma porta de publicação/subscrição;</li>
+<li>Um componente pode publicar um evento e múltiplos componentes podem subscrever o evento;</li>
+<li>O <em>event bus connector</em> entrega eventos:
+<ul>
+<li>Publicadores confiam que os eventos são entregues ao subscritores;</li>
+<li>Subscritores confiam que recebem os eventos para os quais estão subscritos.</li>
+</ul>
+</li>
+<li>Produtores e consumidores estão separados;</li>
+<li>O sistema é mais mantível e envolvível.</li>
+</ul>
+<h3 id="client-server-style--n-tier"><a class="header" href="#client-server-style--n-tier"><em>Client-server style &amp; N-tier</em></a></h3>
+<ul>
+<li>Clientes pedem serviços aos servidores de forma síncrona;</li>
+<li>O cliente pode pedir ao servidor que faça o trabalho;</li>
+<li>A comunicação é iniciada pelos clientes, não pelo servidor;</li>
+<li>O servidores não sabe a identidade do cliente até ser conectado por ele;</li>
+<li>Clientes devem saber a identidade do servidor ou como procurar por ele.</li>
+</ul>
+<p><img src="images/client_server_style.png" alt="image Client-Server" /></p>
+<ul>
+<li>Tem múltiplos pontos de variação:
+<ul>
+<li>Conetores podem ser síncronos ou assíncronos;</li>
+<li>Podem existir limites quanto ao número de clientes ou servidores;</li>
+<li>Conetores podem manter ou não manter estado;</li>
+<li>A topologia do sistema pode ser estática ou dinâmica.</li>
+</ul>
+</li>
+<li>Outra variante é o estilo <em>N-Tier</em>:</li>
+</ul>
+<p><img src="images/n_tier.png" alt="image N-Tier" /></p>
+<ul>
+<li>Utiliza duas ou mais instâncias do estilo <em>client-server</em> de forma a ter uma série de <em>tiers</em>;</li>
+<li>Os pedidos devem seguir em apenas 1 direção;</li>
+<li>Um caso comum é um <em>3-tier system</em> onde:
+<ul>
+<li>o <em>user</em> intervém como um cliente para a lógica de negócio da camada do servidor;</li>
+<li>a camada da lógica de negócio do servidor age como um cliente para a camada de persistência do servidor.</li>
+</ul>
+</li>
+<li>As camadas têm, exclusivamente, funcionalidades de responsabilidade;</li>
+<li>A camada de interface do utilizador é exclusivamente responsável para a interação do utilizador;</li>
+<li>A camada de persistência, exclusivamente, guarda os dados persistentes.</li>
+</ul>
+<h3 id="peer-to-peer-style"><a class="header" href="#peer-to-peer-style"><em>Peer-to-peer style</em></a></h3>
+<ul>
+<li>Nodos comunicam entre eles como <em>peers</em>;</li>
+<li>Relações hierárquicas são proíbidas;</li>
+<li>Cada nodo tem uma habilidade, mas não obrigação, para atuar como o cliente e como servidor;</li>
+<li>O resultado é uma rede de nodos a operarem como <em>peers</em>;</li>
+<li>Um nodo pode pedir ou providenciar serviços a cada nodo;</li>
+<li>Os elementos do estilo <em>peer-to-peer</em> são semelhantes aos do estilo <em>client-server</em>;</li>
+<li>Um conector <em>peer-to-peer</em> tem papéis idênticos em ambos, permitindo a ambos que tenham pedidos e respostas;</li>
+<li>É um sistema igualitário, enquanto que o <em>client-server</em> é hierárquico.</li>
+</ul>
+<h3 id="map-reduce-style"><a class="header" href="#map-reduce-style"><em>Map-Reduce Style</em></a></h3>
+<ul>
+<li>O estilo é apropriado para processar <em>datasets</em> grandes (motores de busca e redes sociais);</li>
+<li>Programas simples (de ordenação ou procura) executam lentamente em grandes <em>datasets</em>, se for utilizado um único computador;</li>
+<li>Enquanto o número de computadores utilizados aumenta, a probabilidade de um deles falhar também irá aumentar;</li>
+<li>Este estilo ativa a recuperação desses falhanços.</li>
+</ul>
+<h3 id="mirrored-rack-and-farm-styles"><a class="header" href="#mirrored-rack-and-farm-styles"><em>Mirrored, rack and farm styles</em></a></h3>
+<ul>
+<li>Os estilos arquiteturais anteriores foram desde o módulo até ao <em>runtime</em> <em>viewtypes</em>;</li>
+<li>Os estilos de alocação <em>viewtype</em> são mais prováveis de ser discutidos por engenheiros de redes do que por arquitetos de <em>software</em>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-12"><a class="header" href="#teórica-12">Teórica 12</a></h1>
+<h2 id="refactoring"><a class="header" href="#refactoring"><em>Refactoring</em></a></h2>
+<ul>
+<li>Forma disciplinada de limpar o código e minimizar as chances de introduzir <em>bugs</em>;</li>
+<li>Quando se faz <em>refactor</em>, está-se a melhorar o <em>design</em> do código após este ter sido escrito;</li>
+<li>Irá provocar alterações no sistema de <em>software</em> de uma forma que não alterará o comportamento exterior do código, melhorando a sua estrutura interna;</li>
+<li>Quando se faz <em>refactor</em> podemos ter um <em>design</em> muito mau, até mesmo caótico, trabalhando-o de forma a torná-lo em código bem desenhado;</li>
+<li>É uma série de pequenos passos, cada um com alterações à estrutura inicial do programa sem alterar o comportamento externo.</li>
+</ul>
+<h3 id="porquê"><a class="header" href="#porquê">Porquê?</a></h3>
+<ul>
+<li>Melhora o <em>design</em> do <em>software</em>;</li>
+<li>Torna o <em>software</em> mais fácil de entender;</li>
+<li>Ajuda a encontrar <em>bugs</em>;</li>
+<li>Ajuda a programar mais rápido.</li>
+</ul>
+<h3 id="razões-para-fazer-refactoring"><a class="header" href="#razões-para-fazer-refactoring">Razões para fazer <em>refactoring</em>:</a></h3>
+<ul>
+<li>Código duplicado;</li>
+<li>Rotina demasiado longa;</li>
+<li><em>Loop</em> demasiado longo ou demasiado <em>nested</em>;</li>
+<li>Classe com pouca coesão;</li>
+<li>Interface de classe que não providencia um nível consistente de abstração;</li>
+<li>Lista de parâmetros tem demasiados parâmetros;</li>
+<li>Alterações dentro de uma classe tendem a ser compartimentalizadas;</li>
+<li>Trocas requerem modificações paralelas a múltiplas classes;</li>
+<li>Hierarquias de herança devem ser modificadas em paralelo;</li>
+<li><em>Case statements</em> devem ser modificados em paralelo;</li>
+<li>Iténs de dados relacionados que são utilizados em conjunto não se encontram organizados em classes;</li>
+<li>Uma rotina utiliza mais atributos de outra classe do que da sua própria classe;</li>
+<li>Um tipo de primitiva de dados está demasiado sobrecarregado;</li>
+<li>Uma classe não faz muito;</li>
+<li>Uma cadeia de rotinas passa <em>tramp data</em>;</li>
+<li>O objeto <em>middleman</em> não está a fazer nada;</li>
+<li>Uma classe está demasiado relacionada com outra;</li>
+<li>Uma rotina tem um mau nome;</li>
+<li>Membros dos dados são públicos;</li>
+<li>Uma subclasse apenas utiliza uma pequena percentagem das rotinas dos seus &quot;pais&quot;;</li>
+<li>Comentários são utilizados para explicar código difícil;</li>
+<li>Variáveis globais são utilizadas;</li>
+<li>Uma rotina utiliza um código de <em>setup</em> antes de chamar uma rotina ou um código de término após chamar uma rotina;</li>
+<li>Um programa contém código que parece que será preciso um dia.</li>
+</ul>
+<h3 id="dicas"><a class="header" href="#dicas">Dicas</a></h3>
+<ul>
+<li>Quando percebermos que temos de adicionar uma funcionalidade a um programa e o código do programa não está convenientemente estruturado para essa adição, primeiramente devemos fazer o <em>refactor</em> para ser fácil adicionar a funcionalidade e apenas após isso adicioná-la;</li>
+<li>Antes de iniciar o processo de <em>refactoring</em>, devemos verificar se temos uma base sólida para testes <em>self-checking</em>;</li>
+<li>Se tivermos um fragmento de código que pode ser agrupado, devemos tornar o fragmento num método que tem um nome que explique o seu propósito;</li>
+<li>Devemos trocar o programa em passos pequenos para facilitar o processo de descoberta de possíveis falhas;</li>
+<li></li>
+</ul>
+<h4 id="trocar-o-nome-de-variáveis"><a class="header" href="#trocar-o-nome-de-variáveis">Trocar o nome de variáveis</a></h4>
+<ul>
+<li>Bom código deve comunicar claramente aquilo que está a fazer;</li>
+<li>Nomes de variáveis são chave para limpar o código;</li>
+<li>Devemos mudar os nomes para melhorar a percetibilidade das coisas;</li>
+<li>Com boas ferramentas de <em>find-and-replace</em> é fácil de fazer este processo;</li>
+<li>Ter um <em>strong typing</em> e <em>testing</em> vai realçar as falhas;</li>
+<li>Qualquer um pode escrever código que o computador perceba, mas apenas os bons programadores escrevem código que os humanos percebem.</li>
+</ul>
+<h4 id="mover-um-método"><a class="header" href="#mover-um-método">Mover um método</a></h4>
+<ul>
+<li>Um método está a utilizar ou é utilizado por diversas funcionalidades de outra classe e não da qual na que está definido:
+<ul>
+<li>Deve ser criado um novo método com um corpo semelhante na classe que o utiliza mais;</li>
+<li>Em seguida, torna-se o método antigo para uma simples delegação ou remove-se.</li>
+</ul>
+</li>
+</ul>
+<h4 id="trocar-temp-por-query"><a class="header" href="#trocar-temp-por-query">Trocar <em>temp</em> por <em>query</em></a></h4>
+<ul>
+<li>Devemos livrar-nos de variáveis temporárias redundantes, pois estas podem causar que múltiplos parâmetros desnecessários sejam passados de um lado para o outro;</li>
+<li>Facilmente, perde-se o fio desses parâmetros e o porquê de estarem onde estão;</li>
+<li>Isto pode causar uma quebra de desempenho, visto pedirmos a execução de mais <em>queries</em>.</li>
+</ul>
+<h4 id="método-inline"><a class="header" href="#método-inline">Método <em>inline</em></a></h4>
+<ul>
+<li>O seu corpo é tão claro como o seu nome;</li>
+<li>Colocar o corpo do método no corpo das funções que o chamam e remover o método.</li>
+</ul>
+<h4 id="introdução-de-uma-variável-explicativa"><a class="header" href="#introdução-de-uma-variável-explicativa">Introdução de uma variável explicativa</a></h4>
+<ul>
+<li>Existe uma expressão complicada;</li>
+<li>Colocar o resultado da expressão (ou partes dela) numa variável temporária com um nome explicativo.</li>
+</ul>
+<h4 id="substituir-um-algoritmo"><a class="header" href="#substituir-um-algoritmo">Substituir um algoritmo</a></h4>
+<ul>
+<li>Um algoritmo pode ser substituído por um mais claro;</li>
+<li>Trocar o corpo do método pelo novo algoritmo.</li>
+</ul>
+<h4 id="extraír-uma-classe"><a class="header" href="#extraír-uma-classe">Extraír uma Classe</a></h4>
+<ul>
+<li>Uma classe faz o trabalho de duas classes;</li>
+<li>Cria-se uma nova classe e move-se os campos/métodos relevantes para a nova classe.</li>
+</ul>
+<h3 id="refactoring-e-design"><a class="header" href="#refactoring-e-design"><em>Refactoring</em> e <em>Design</em></a></h3>
+<ul>
+<li><em>Refactoring</em> é um complemento ao <em>design</em>;</li>
+<li>Pode ser uma alternatica ao <em>upfront design</em>:
+<ul>
+<li>O programador programa e depois efetua o <em>refactor</em> para o formato pretendido;</li>
+<li>Engenheiros de <em>software</em> fazem o <em>design upfront</em>, mas não tentam encontrar a solução, embora precisem de uma solução razoável.</li>
+</ul>
+</li>
+<li><em>Refactoring</em> podem levar a <em>designs</em> simples sem sacrificar a flexibilidade;</li>
+<li>Assim, torna-se o processo de <em>design</em> mais fácil e menos stressante. </li>
+</ul>
+<h3 id="bad-code-smells"><a class="header" href="#bad-code-smells"><em>Bad Code Smells</em></a></h3>
+<ul>
+<li><em>Bloaters</em> são unidades de código que aumentaram em tantas proporções que se tornaram difíceis de trabalhar com;</li>
+<li>Geralmente, estes <em>smells</em> acumulam-se ao longo do tempo enquanto o programa evolui;</li>
+<li><em>Object-orientation abusers smelss</em> são aplicações incorretas ou incompletas dos princípios da programação OO;</li>
+<li><em>Change preventers smells</em>: se temos de trocar algo num sítio do código, temos de fazer múltiplas operações noutros sítios, também;</li>
+<li>Desenvolvimento de <em>software</em> torna-se muito mais difícil e caro;</li>
+<li>Um <em>dispensable</em> é algo insignificante e inútil que a sua inexistência tornaria o código mais limpo, mais eficiente e mais fácil de entender;
+<ul>
+<li>Por exemplo, <em>dead code</em>.</li>
+</ul>
+</li>
+<li><em>Coupler smells</em> contribuem para o <em>coupling</em> excessivo entre classes.</li>
+</ul>
+<h2 id="mensagens-chave"><a class="header" href="#mensagens-chave">Mensagens Chave</a></h2>
+<ul>
+<li><em>Refactoring</em> é uma série de pequenos passos, em que cada um irá alterar a estrutura interna do programa sem alterar o seu comportamento externo;</li>
+<li>Antes de se iniciar o processo de <em>refactoring</em>, devemos verificar que temos uma boa base para <em>self-checking tests</em>;</li>
+<li><em>Refactoring</em> troca o programa em <strong>passos pequenos</strong>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teórica-13"><a class="header" href="#teórica-13">Teórica 13</a></h1>
+<h2 id="modelação-uml"><a class="header" href="#modelação-uml">Modelação UML</a></h2>
+<h3 id="modelação"><a class="header" href="#modelação">Modelação</a></h3>
+<ul>
+<li>Ingrediente essencial em todos os campos de engenharia;</li>
+<li>Tarefa muito criativa;</li>
+<li>Processo de:
+<ul>
+<li>Identificar conceitos adequados;</li>
+<li>Selecionar abstrações para construir um modelo que reflita, de forma apropriada, um dado universo de discurso.</li>
+</ul>
+</li>
+<li>Permite um uso benéfico em termos de custo-eficiência de um modelo, ao invés de objetos ou processos do mundo real para algum propósito;</li>
+<li>Se deve ser útil, um modelo não deve representar todos os aspetos da realidade;</li>
+<li>É relacionado com abstração, simplificação e formalização;</li>
+<li>A operação inversa à abstração é o refinamento e a concretização.</li>
+</ul>
+<p><img src="images/model_dimensions.png" alt="image Dimensões" /></p>
+<h4 id="modelos-simbólicos"><a class="header" href="#modelos-simbólicos">Modelos Simbólicos</a></h4>
+<ul>
+<li>Um modelo simbólico (ou matemático) utiliza relações lógicas e quantitativas envolvendo dimensões do sistema;</li>
+<li>Tipicamente, um modelo simbólico não tem em consideração o sistema que representa, sendo, fundamentalmente, arbitrário ou convencional;</li>
+<li>Arbitrariedade é a abstenção de conexões necessárias entre uma forma linguística e o seu significado;</li>
+<li>Uma classe é representada em UML por um retângulo, sendo isto uma convenção pura;
+<ul>
+<li>A palavra &quot;morango&quot; não tem relação com o fruto em si, sendo uma pura convenção.</li>
+</ul>
+</li>
+</ul>
+<h4 id="propriedades-dos-modelos"><a class="header" href="#propriedades-dos-modelos">Propriedades dos Modelos</a></h4>
+<ul>
+<li><strong>Abstração</strong>: são uma descrição reduzida do sistema;</li>
+<li><strong>Percetibilidade</strong>: removendo detalhes irrelevantes para um dado ponto de vista, o modelo permite que as propriedades do sistema sejam mais facilmente entendidas;</li>
+<li><strong>Eficácia</strong>: para as propriedades de interesse, o modelo providencia uma representação <em>true-to-life</em> do sistema;</li>
+<li><strong>Raciocínio</strong>: ajuda à análise e raciocínio correto acerca das propriedades interessantes do sistema, seja através de experimentalização ou de análise formal;</li>
+<li><strong>Barato</strong>: deve ser muito mais barato do que construír e analisar o sistema.</li>
+</ul>
+<h3 id="uml"><a class="header" href="#uml">UML</a></h3>
+<ul>
+<li>Engenheiros de <em>software</em> utilizam UML em 3 modos:
+<ul>
+<li><em>sketches</em> (<em>design</em> informal);</li>
+<li><em>blueprint</em> (desenvolvimento orientado a modelos);</li>
+<li>linguagem de programação.</li>
+</ul>
+</li>
+<li>Em <em>sketches</em>, é utilizado para ajudar na comunicação de certos aspetos de um sistema;</li>
+<li>Em <em>blueprints</em>, detalha-se artefactos de <em>design</em> para produzir código;</li>
+<li>Estes modelos devem conter detalhes suficientes para permitir que os <em>devs</em> criem sistemas prontos a correr sem ser preciso tomar decisões de <em>design</em>;</li>
+<li>Quando o sistema pode ser especificado em UML, estamos na altura de usar UML como linguagem de programação.</li>
+</ul>
+<h4 id="diagramas"><a class="header" href="#diagramas">Diagramas</a></h4>
+<p><img src="images/uml_diagrams.png" alt="image Diagramas UML" /></p>
+<h4 id="essencial"><a class="header" href="#essencial">Essencial</a></h4>
+<ul>
+<li><strong>Domínio</strong>: descreve o vocabulários, os concetos do domínio e as características dos sistemas que podem ser desenvolvidos para o domínio considerado;</li>
+<li><em><strong>Use Case</strong></em>: descreve as funcionalidades propostas para um dado sistema;</li>
+<li><strong>Interação</strong>: apresenta como é que múltiplos objetos ou entidades colaboram, enfatizando o <em>flow</em> de controlo e de dados entre eles;</li>
+<li><strong>Classes</strong>: apresenta um conjunto de conceitos, tipos, classes e as suas respetivas relação;</li>
+<li><strong>Estado</strong>: Especifica o comportamento de uma entidade ou indica os múltiplos estados (ou modos) sobre os quais passa durante a sua vida;</li>
+<li><strong>Atividade</strong>: Apresenta o controlo entre atividades de um processo.</li>
+</ul>
+<h5 id="modelo-de-domínio"><a class="header" href="#modelo-de-domínio">Modelo de Domínio</a></h5>
+<p><img src="images/domain_model.png" alt="image Modelo de Domínio" /></p>
+<h5 id="use-cases"><a class="header" href="#use-cases"><em>Use Cases</em></a></h5>
+<p><img src="images/use_cases.png" alt="image Use Cases" /></p>
+<ul>
+<li>Não modelam processos/<em>workflows</em>;</li>
+<li>Atores não são parte do sistema, logo devem ser colocados fora do retângulo principal (sistema);</li>
+<li>Podemos criar hereditariedade;</li>
+<li>Múltiplos <em>use cases</em> pequenos com o mesmo objetivo devem ser agrupados num <em>use case</em> mais abstrato;</li>
+<li>Os múltiplos passos de uma funcionalidade não são parte dos <em>use cases</em>, não devemos tentar separar os <em>use cases</em> deles mesmos;
+<ul>
+<li>Não se faz decomposição funcional.</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/roles_use_case.png" alt="image Notação" /></p>
+<p><img src="images/roles_use_case2.png" alt="image Notação 2" /></p>
+<h5 id="diagrama-de-classes"><a class="header" href="#diagrama-de-classes">Diagrama de Classes</a></h5>
+<p><img src="images/class_diagram1.png" alt="image Diagrama de Classes" /></p>
+<p><img src="images/class_diagram2.png" alt="image Diagrama de Classes" /></p>
+<h5 id="diagrama-de-estados"><a class="header" href="#diagrama-de-estados">Diagrama de Estados</a></h5>
+<p><img src="images/state_model.png" alt="image Diagrama de Estados" /></p>
+<h5 id="diagrama-de-atividade"><a class="header" href="#diagrama-de-atividade">Diagrama de Atividade</a></h5>
+<p><img src="images/activity_model.png" alt="image Diagrama de Atividade" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+    </body>
+</html>

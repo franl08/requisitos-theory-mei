@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang="pt" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Teórica 09 - Teóricas de RAS</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Teórica 01</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Teórica 02</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Teórica 03</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> Teórica 04</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> Teórica 05</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">6.</strong> Teórica 06</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">7.</strong> Teórica 07</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">8.</strong> Teórica 08</a></li><li class="chapter-item expanded "><a href="chapter_9.html" class="active"><strong aria-hidden="true">9.</strong> Teórica 09</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">10.</strong> Teórica 10</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">11.</strong> Teórica 11</a></li><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">12.</strong> Teórica 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">13.</strong> Teórica 13</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Teóricas de RAS</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="teórica-09"><a class="header" href="#teórica-09">Teórica 09</a></h1>
+<h2 id="táticas-de-design"><a class="header" href="#táticas-de-design">Táticas de <em>Design</em></a></h2>
+<ul>
+<li>São utilizadas pelo arquiteto de <em>software</em> para criar um <em>design</em>;</li>
+<li>Conectam os requisitos de atributos de qualidade com decisões arquiteturais;</li>
+<li>São uma decisão de <em>design</em> que irá ter impacto sob atributos de qualidade específicos;</li>
+</ul>
+<p><img src="images/tactics.png" alt="image Táticas" /></p>
+<h3 id="tipos-de-táticas"><a class="header" href="#tipos-de-táticas">Tipos de Táticas</a></h3>
+<ul>
+<li>Táticas de Disponibilidade;</li>
+<li>Táticas de Modificabilidade;</li>
+<li>Táticas de Desempenho;</li>
+<li>Táticas de Segurança;</li>
+<li>Táticas de Testabilidade;</li>
+<li>Táticas de Usabilidade.</li>
+</ul>
+<h3 id="táticas-de-disponibilidade"><a class="header" href="#táticas-de-disponibilidade">Táticas de Disponibilidade</a></h3>
+<ul>
+<li>Têm como alvo evitar que faltas se tornem falhas ou, pelo menos, reduzir os efeitos que uma falta poderá ter e repará-los o mais depressa possível;</li>
+<li>Muitas destas táticas estão disponíveis na execução <em>standard</em> dos sistemas;</li>
+<li>Todas as abordagem para endereçar disponibilidade involvem algum tipo de:
+<ul>
+<li>Redundância;</li>
+<li>Monitorização para detetar falhas;</li>
+<li>Recuperação quando uma falha é detetada.</li>
+</ul>
+</li>
+<li>A monitorização e a recuperação tanto podem ser processos automáticos, como processo manuais.</li>
+</ul>
+<h4 id="deteção-de-falhas"><a class="header" href="#deteção-de-falhas">Deteção de Falhas</a></h4>
+<ul>
+<li><em>Ping/echo</em>: um componente manda um <em>ping</em> e espera receber um <em>echo</em> como resposta do componente a analisar;</li>
+<li><em>Heartbeat</em>: um componente emite, de forma periódica, uma mensagem <em>heartbeat</em> e outro componente ouve-a;
+<ul>
+<li>No caso de o <em>heartbeat</em> falhar, assume-se que o componente de origem falhou e o componente responsável pela correção de falhas é notificado.</li>
+</ul>
+</li>
+<li><em>Exceptions</em>: quando uma classe de falha é reconhecida lança-se uma <em>Exception</em>.</li>
+</ul>
+<h4 id="recuperação-de-falhas"><a class="header" href="#recuperação-de-falhas">Recuperação de Falhas</a></h4>
+<ul>
+<li><em>Voting</em>: cada um dos processos a correr em processadores redundantes recebe o <em>input</em> e computaciona o <em>output</em> que envia a um <em>voter</em>;
+<ul>
+<li>Algoritmos populares são as regras de maioria e o componente favorito;</li>
+<li>É utilizado para corrigir erros de operações de um algoritmo ou falhas de um processador.</li>
+</ul>
+</li>
+<li><em>Active Redundancy</em>: todos os componentes redundantes respondem aos eventos em paralelo;
+<ul>
+<li>Apenas é considerada a resposta de 1 componente (geralmente, o primeiro a responder), sendo as restantes descartadas.</li>
+</ul>
+</li>
+<li><em>Passive Redundancy</em>: um componente (primário) responde ao eventos e informa os outros componentes (<em>the standbys</em>) do estado das atualizações que estes devem fazer.
+<ul>
+<li>Quando uma falha ocorra, o sistem deverá, primeiramente, garantir que o estado de <em>backup</em> é suficiente recente antes de continuar os serviços.</li>
+</ul>
+</li>
+</ul>
+<h4 id="prevenção-de-falhas"><a class="header" href="#prevenção-de-falhas">Prevenção de Falhas</a></h4>
+<ul>
+<li><em>Removal from Service</em>: Remove um componente de operar em atividades que já se encontram a decorrer;</li>
+<li><em>Transactions</em>: Agrupamento de múltiplos passos sequenciais que pode ser desfeito de uma vez;
+<ul>
+<li>Usados para evitar que dados sejam afetados se um passo do processo falhar;</li>
+<li>Também evitam colisões de acesso a dados de múltiplas <em>threads</em> em simultâneo.</li>
+</ul>
+</li>
+<li><em>Process Monitor</em>: Sempre que uma falha num processo é detetada, o processo de monitorização pode apagar esse processo;
+<ul>
+<li>Posteriormente, é necessário criar uma nova instância desse processo.</li>
+</ul>
+</li>
+</ul>
+<h3 id="táticas-de-desempenho"><a class="header" href="#táticas-de-desempenho">Táticas de Desempenho</a></h3>
+<h4 id="eventos"><a class="header" href="#eventos">Eventos</a></h4>
+<ul>
+<li>Táticas de desempenho geram respostas a eventos do sistema num intervalo de tempo;
+<ul>
+<li>O evento poderá ser singular ou uma <em>stream</em> e será o gatilho para um pedido de computação de desempenho,</li>
+<li>O sistema irá processar o evento e gerar uma resposta;</li>
+<li>As táticas de desempenho irão controlar o tempo em que a resposta é gerada;</li>
+</ul>
+</li>
+<li>A <strong>latência</strong> é o tempo entre o evento e a geração da resposta ao evento.</li>
+</ul>
+<p><img src="images/perfomance_tactics.png" alt="image Táticas de Desempenho" /></p>
+<h4 id="consumo-de-recursos-e-tempo-de-bloqueio"><a class="header" href="#consumo-de-recursos-e-tempo-de-bloqueio">Consumo de Recursos e Tempo de Bloqueio</a></h4>
+<ul>
+<li>Quando um evento acontece, o sistema deverá processá-lo ou estará bloqueado por algum motivo;
+<ul>
+<li>O consumo de recursos deve ser gerido;</li>
+<li>O acesso a secções críticas deve ser sequencial;</li>
+</ul>
+</li>
+<li>Existem três categorias de táticas relacionadas com o desempenho:
+<ul>
+<li>Demanda de recursos;</li>
+<li>Gestão de recursos;</li>
+<li>Recursos arbitrários. </li>
+</ul>
+</li>
+</ul>
+<h4 id="demanda-de-recursos"><a class="header" href="#demanda-de-recursos">Demanda de Recursos</a></h4>
+<ul>
+<li>As <em>streams</em> de eventos são a fonte das demandas de recursos;</li>
+<li>Tem 2 aspetos principais:
+<ul>
+<li>O tempo entre eventos numa <em>stream</em> de recursos;</li>
+<li>Quantos recursos é que são consumidos por cada pedido.</li>
+</ul>
+</li>
+<li>Uma tática que permite diminuir a latência é a redução dos recursos necessários para processar uma <em>stream</em>;</li>
+<li>Deve ainda aumentar-se a eficiência computacional utilizando os algoritmos adequados, sendo que uma melhoria no algoritmo deverá diminuir a latência;</li>
+<li>Por vezes, um recursos pode ser trocado por outro;</li>
+<li>Deve reduzir o <em>overhead</em> computacional, uma vez que se não existir pedidos para um dado recurso, o processamento será também menor;</li>
+<li>A utilização de nós intermediários irá aumentar o número de recursos consumidos, pelo que a sua remoção diminuirá a latência;</li>
+<li>Por fim, outra táticas para reduzir a latência passa por reduzir o número de eventos a serem processados.</li>
+</ul>
+<h4 id="gestão-de-recursos"><a class="header" href="#gestão-de-recursos">Gestão de Recursos</a></h4>
+<ul>
+<li>Introdução de concorrência: se os processos puderem ser tratados de forma paralela, então o <em>blocked time</em> será reduzido;</li>
+<li>Devem manter-se múltiplas cópias, tanto dos dados, como das computações. Clientes num padrão cliente-servidor são réplicas da computação.
+<ul>
+<li>Isto irá reduzir o nível de contenção, comparativamente ao caso em que todas as computações são executadas num servidor central;</li>
+<li>Para diminuir a contenção, poderá ainda utilizar-se <em>caching</em>, mas as cópias dos dados devem ser consistentes e estar sincronizadas.</li>
+</ul>
+</li>
+<li>O aumento dos recursos disponíveis (introdução de novos processadores, de mais memória, de processadores mais rápidos, etc...) irá, muito provavelmente, reduzir a latência.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="chapter_10.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="chapter_10.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

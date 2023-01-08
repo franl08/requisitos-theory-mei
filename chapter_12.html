@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="pt" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Teórica 12 - Teóricas de RAS</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Teórica 01</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Teórica 02</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Teórica 03</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> Teórica 04</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> Teórica 05</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">6.</strong> Teórica 06</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">7.</strong> Teórica 07</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">8.</strong> Teórica 08</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">9.</strong> Teórica 09</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">10.</strong> Teórica 10</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">11.</strong> Teórica 11</a></li><li class="chapter-item expanded "><a href="chapter_12.html" class="active"><strong aria-hidden="true">12.</strong> Teórica 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">13.</strong> Teórica 13</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Teóricas de RAS</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="teórica-12"><a class="header" href="#teórica-12">Teórica 12</a></h1>
+<h2 id="refactoring"><a class="header" href="#refactoring"><em>Refactoring</em></a></h2>
+<ul>
+<li>Forma disciplinada de limpar o código e minimizar as chances de introduzir <em>bugs</em>;</li>
+<li>Quando se faz <em>refactor</em>, está-se a melhorar o <em>design</em> do código após este ter sido escrito;</li>
+<li>Irá provocar alterações no sistema de <em>software</em> de uma forma que não alterará o comportamento exterior do código, melhorando a sua estrutura interna;</li>
+<li>Quando se faz <em>refactor</em> podemos ter um <em>design</em> muito mau, até mesmo caótico, trabalhando-o de forma a torná-lo em código bem desenhado;</li>
+<li>É uma série de pequenos passos, cada um com alterações à estrutura inicial do programa sem alterar o comportamento externo.</li>
+</ul>
+<h3 id="porquê"><a class="header" href="#porquê">Porquê?</a></h3>
+<ul>
+<li>Melhora o <em>design</em> do <em>software</em>;</li>
+<li>Torna o <em>software</em> mais fácil de entender;</li>
+<li>Ajuda a encontrar <em>bugs</em>;</li>
+<li>Ajuda a programar mais rápido.</li>
+</ul>
+<h3 id="razões-para-fazer-refactoring"><a class="header" href="#razões-para-fazer-refactoring">Razões para fazer <em>refactoring</em>:</a></h3>
+<ul>
+<li>Código duplicado;</li>
+<li>Rotina demasiado longa;</li>
+<li><em>Loop</em> demasiado longo ou demasiado <em>nested</em>;</li>
+<li>Classe com pouca coesão;</li>
+<li>Interface de classe que não providencia um nível consistente de abstração;</li>
+<li>Lista de parâmetros tem demasiados parâmetros;</li>
+<li>Alterações dentro de uma classe tendem a ser compartimentalizadas;</li>
+<li>Trocas requerem modificações paralelas a múltiplas classes;</li>
+<li>Hierarquias de herança devem ser modificadas em paralelo;</li>
+<li><em>Case statements</em> devem ser modificados em paralelo;</li>
+<li>Iténs de dados relacionados que são utilizados em conjunto não se encontram organizados em classes;</li>
+<li>Uma rotina utiliza mais atributos de outra classe do que da sua própria classe;</li>
+<li>Um tipo de primitiva de dados está demasiado sobrecarregado;</li>
+<li>Uma classe não faz muito;</li>
+<li>Uma cadeia de rotinas passa <em>tramp data</em>;</li>
+<li>O objeto <em>middleman</em> não está a fazer nada;</li>
+<li>Uma classe está demasiado relacionada com outra;</li>
+<li>Uma rotina tem um mau nome;</li>
+<li>Membros dos dados são públicos;</li>
+<li>Uma subclasse apenas utiliza uma pequena percentagem das rotinas dos seus &quot;pais&quot;;</li>
+<li>Comentários são utilizados para explicar código difícil;</li>
+<li>Variáveis globais são utilizadas;</li>
+<li>Uma rotina utiliza um código de <em>setup</em> antes de chamar uma rotina ou um código de término após chamar uma rotina;</li>
+<li>Um programa contém código que parece que será preciso um dia.</li>
+</ul>
+<h3 id="dicas"><a class="header" href="#dicas">Dicas</a></h3>
+<ul>
+<li>Quando percebermos que temos de adicionar uma funcionalidade a um programa e o código do programa não está convenientemente estruturado para essa adição, primeiramente devemos fazer o <em>refactor</em> para ser fácil adicionar a funcionalidade e apenas após isso adicioná-la;</li>
+<li>Antes de iniciar o processo de <em>refactoring</em>, devemos verificar se temos uma base sólida para testes <em>self-checking</em>;</li>
+<li>Se tivermos um fragmento de código que pode ser agrupado, devemos tornar o fragmento num método que tem um nome que explique o seu propósito;</li>
+<li>Devemos trocar o programa em passos pequenos para facilitar o processo de descoberta de possíveis falhas;</li>
+<li></li>
+</ul>
+<h4 id="trocar-o-nome-de-variáveis"><a class="header" href="#trocar-o-nome-de-variáveis">Trocar o nome de variáveis</a></h4>
+<ul>
+<li>Bom código deve comunicar claramente aquilo que está a fazer;</li>
+<li>Nomes de variáveis são chave para limpar o código;</li>
+<li>Devemos mudar os nomes para melhorar a percetibilidade das coisas;</li>
+<li>Com boas ferramentas de <em>find-and-replace</em> é fácil de fazer este processo;</li>
+<li>Ter um <em>strong typing</em> e <em>testing</em> vai realçar as falhas;</li>
+<li>Qualquer um pode escrever código que o computador perceba, mas apenas os bons programadores escrevem código que os humanos percebem.</li>
+</ul>
+<h4 id="mover-um-método"><a class="header" href="#mover-um-método">Mover um método</a></h4>
+<ul>
+<li>Um método está a utilizar ou é utilizado por diversas funcionalidades de outra classe e não da qual na que está definido:
+<ul>
+<li>Deve ser criado um novo método com um corpo semelhante na classe que o utiliza mais;</li>
+<li>Em seguida, torna-se o método antigo para uma simples delegação ou remove-se.</li>
+</ul>
+</li>
+</ul>
+<h4 id="trocar-temp-por-query"><a class="header" href="#trocar-temp-por-query">Trocar <em>temp</em> por <em>query</em></a></h4>
+<ul>
+<li>Devemos livrar-nos de variáveis temporárias redundantes, pois estas podem causar que múltiplos parâmetros desnecessários sejam passados de um lado para o outro;</li>
+<li>Facilmente, perde-se o fio desses parâmetros e o porquê de estarem onde estão;</li>
+<li>Isto pode causar uma quebra de desempenho, visto pedirmos a execução de mais <em>queries</em>.</li>
+</ul>
+<h4 id="método-inline"><a class="header" href="#método-inline">Método <em>inline</em></a></h4>
+<ul>
+<li>O seu corpo é tão claro como o seu nome;</li>
+<li>Colocar o corpo do método no corpo das funções que o chamam e remover o método.</li>
+</ul>
+<h4 id="introdução-de-uma-variável-explicativa"><a class="header" href="#introdução-de-uma-variável-explicativa">Introdução de uma variável explicativa</a></h4>
+<ul>
+<li>Existe uma expressão complicada;</li>
+<li>Colocar o resultado da expressão (ou partes dela) numa variável temporária com um nome explicativo.</li>
+</ul>
+<h4 id="substituir-um-algoritmo"><a class="header" href="#substituir-um-algoritmo">Substituir um algoritmo</a></h4>
+<ul>
+<li>Um algoritmo pode ser substituído por um mais claro;</li>
+<li>Trocar o corpo do método pelo novo algoritmo.</li>
+</ul>
+<h4 id="extraír-uma-classe"><a class="header" href="#extraír-uma-classe">Extraír uma Classe</a></h4>
+<ul>
+<li>Uma classe faz o trabalho de duas classes;</li>
+<li>Cria-se uma nova classe e move-se os campos/métodos relevantes para a nova classe.</li>
+</ul>
+<h3 id="refactoring-e-design"><a class="header" href="#refactoring-e-design"><em>Refactoring</em> e <em>Design</em></a></h3>
+<ul>
+<li><em>Refactoring</em> é um complemento ao <em>design</em>;</li>
+<li>Pode ser uma alternatica ao <em>upfront design</em>:
+<ul>
+<li>O programador programa e depois efetua o <em>refactor</em> para o formato pretendido;</li>
+<li>Engenheiros de <em>software</em> fazem o <em>design upfront</em>, mas não tentam encontrar a solução, embora precisem de uma solução razoável.</li>
+</ul>
+</li>
+<li><em>Refactoring</em> podem levar a <em>designs</em> simples sem sacrificar a flexibilidade;</li>
+<li>Assim, torna-se o processo de <em>design</em> mais fácil e menos stressante. </li>
+</ul>
+<h3 id="bad-code-smells"><a class="header" href="#bad-code-smells"><em>Bad Code Smells</em></a></h3>
+<ul>
+<li><em>Bloaters</em> são unidades de código que aumentaram em tantas proporções que se tornaram difíceis de trabalhar com;</li>
+<li>Geralmente, estes <em>smells</em> acumulam-se ao longo do tempo enquanto o programa evolui;</li>
+<li><em>Object-orientation abusers smelss</em> são aplicações incorretas ou incompletas dos princípios da programação OO;</li>
+<li><em>Change preventers smells</em>: se temos de trocar algo num sítio do código, temos de fazer múltiplas operações noutros sítios, também;</li>
+<li>Desenvolvimento de <em>software</em> torna-se muito mais difícil e caro;</li>
+<li>Um <em>dispensable</em> é algo insignificante e inútil que a sua inexistência tornaria o código mais limpo, mais eficiente e mais fácil de entender;
+<ul>
+<li>Por exemplo, <em>dead code</em>.</li>
+</ul>
+</li>
+<li><em>Coupler smells</em> contribuem para o <em>coupling</em> excessivo entre classes.</li>
+</ul>
+<h2 id="mensagens-chave"><a class="header" href="#mensagens-chave">Mensagens Chave</a></h2>
+<ul>
+<li><em>Refactoring</em> é uma série de pequenos passos, em que cada um irá alterar a estrutura interna do programa sem alterar o seu comportamento externo;</li>
+<li>Antes de se iniciar o processo de <em>refactoring</em>, devemos verificar que temos uma boa base para <em>self-checking tests</em>;</li>
+<li><em>Refactoring</em> troca o programa em <strong>passos pequenos</strong>.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_11.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="chapter_13.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_11.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="chapter_13.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
